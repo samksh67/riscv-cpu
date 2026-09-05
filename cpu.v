@@ -20,18 +20,22 @@ module cpu (
 
     // ---- control ----
     wire [3:0] alu_op;
-    wire       reg_write, alu_src, mem_write, mem_to_reg, branch;
+    wire       reg_write, alu_src, mem_write, mem_to_reg, branch, jump, jalr;
 
     control u_ctrl(.opcode(opcode), .funct3(funct3), .funct7(funct7),
                    .alu_op(alu_op), .reg_write(reg_write), .alu_src(alu_src),
                    .mem_write(mem_write), .mem_to_reg(mem_to_reg),
-                   .branch(branch));
+                   .branch(branch), .jump(jump), .jalr(jalr));
 
     // ---- register file ----
     wire [31:0] rs1_data, rs2_data;
     wire [31:0] alu_result;
     wire [31:0] mem_rdata;
-    wire [31:0] write_data = mem_to_reg ? mem_rdata : alu_result;
+
+    // three sources: return address (jump), memory (load), or ALU
+    wire [31:0] write_data = jump       ? (pc + 32'd4) :
+                             mem_to_reg ?  mem_rdata   :
+                                           alu_result;
 
     regfile u_rf(.clk(clk), .we(reg_write), .rd_addr(rd), .rd_data(write_data),
                  .rs1_addr(rs1), .rs2_addr(rs2),
@@ -63,6 +67,8 @@ module cpu (
 
     always @(posedge clk) begin
         if (rst)              pc <= 32'd0;
+        else if (jalr)        pc <= (rs1_data + imm) & ~32'd1;
+        else if (jump)        pc <= pc + imm;
         else if (take_branch) pc <= pc + imm;
         else                  pc <= pc + 32'd4;
     end

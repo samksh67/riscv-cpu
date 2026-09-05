@@ -21,10 +21,12 @@ module decoder (
     localparam OP_LOAD  = 7'b0000011;  // lw, lb...
     localparam OP_STORE = 7'b0100011;  // sw, sb...
     localparam OP_BR    = 7'b1100011;  // beq, bne...
+    localparam OP_JAL  = 7'b1101111;
+    localparam OP_JALR = 7'b1100111;
 
     always @(*) begin
         case (opcode)
-            OP_I, OP_LOAD:
+            OP_I, OP_LOAD,OP_JALR:
                 imm = {{20{inst[31]}}, inst[31:20]};
 
             OP_STORE:
@@ -32,6 +34,9 @@ module decoder (
 
             OP_BR:
                 imm = {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0};
+
+            OP_JAL:
+                imm = {{12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0};
 
             default:
                 imm = 32'b0;   // R-type has no immediate
