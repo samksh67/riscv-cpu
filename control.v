@@ -14,7 +14,7 @@ module control (
     localparam OP_LOAD  = 7'b0000011;
     localparam OP_STORE = 7'b0100011;
     localparam OP_BR = 7'b1100011;
-    
+
 
     always @(*) begin
         // safe defaults
@@ -71,10 +71,17 @@ module control (
             end
 
             OP_BR: begin
-                reg_write = 1'b0;   // branches write nothing
-                alu_src   = 1'b0;   // compare two registers
-                alu_op    = 4'd1;   // subtract
+                reg_write = 1'b0;
+                alu_src   = 1'b0;
                 branch    = 1'b1;
+                case (funct3)
+                    3'b000: alu_op = 4'd1;   // beq  - subtract, check zero
+                    3'b001: alu_op = 4'd1;   // bne  - subtract, check not zero
+                    3'b100: alu_op = 4'd8;   // blt  - slt
+                    3'b101: alu_op = 4'd8;   // bge  - slt, inverted
+                    3'b110: alu_op = 4'd9;   // bltu - sltu
+                    3'b111: alu_op = 4'd9;   // bgeu - sltu, inverted
+                endcase
             end
         endcase
     end
