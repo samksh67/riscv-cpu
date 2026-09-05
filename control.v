@@ -7,13 +7,17 @@ module control (
     output reg       alu_src,
     output reg       mem_write,
     output reg       mem_to_reg,
-    output reg       branch
+    output reg       branch,
+    output reg       jump,
+    output reg       jalr
 );
     localparam OP_R = 7'b0110011;
     localparam OP_I = 7'b0010011;
     localparam OP_LOAD  = 7'b0000011;
     localparam OP_STORE = 7'b0100011;
     localparam OP_BR = 7'b1100011;
+    localparam OP_JAL  = 7'b1101111;
+    localparam OP_JALR = 7'b1100111;
 
 
     always @(*) begin
@@ -24,6 +28,8 @@ module control (
         mem_write  = 1'b0;
         mem_to_reg = 1'b0;
         branch = 1'b0;
+        jump = 1'b0;
+        jalr = 1'b0;
 
         case (opcode)
             OP_R: begin
@@ -82,6 +88,19 @@ module control (
                     3'b110: alu_op = 4'd9;   // bltu - sltu
                     3'b111: alu_op = 4'd9;   // bgeu - sltu, inverted
                 endcase
+            end
+
+            OP_JAL: begin
+                reg_write = 1'b1;   // saves return address
+                jump      = 1'b1;
+            end
+
+            OP_JALR: begin
+                reg_write = 1'b1;
+                alu_src   = 1'b1;
+                alu_op    = 4'd0;   // rs1 + imm
+                jump      = 1'b1;
+                jalr      = 1'b1;
             end
         endcase
     end
