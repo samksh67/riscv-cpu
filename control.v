@@ -6,12 +6,15 @@ module control (
     output reg       reg_write,
     output reg       alu_src,
     output reg       mem_write,
-    output reg       mem_to_reg
+    output reg       mem_to_reg,
+    output reg       branch
 );
     localparam OP_R = 7'b0110011;
     localparam OP_I = 7'b0010011;
     localparam OP_LOAD  = 7'b0000011;
     localparam OP_STORE = 7'b0100011;
+    localparam OP_BR = 7'b1100011;
+    
 
     always @(*) begin
         // safe defaults
@@ -20,6 +23,7 @@ module control (
         alu_src    = 1'b0;
         mem_write  = 1'b0;
         mem_to_reg = 1'b0;
+        branch = 1'b0;
 
         case (opcode)
             OP_R: begin
@@ -64,6 +68,13 @@ module control (
                 alu_src    = 1'b1;   // address = rs1 + immediate
                 alu_op     = 4'd0;   // add
                 mem_write  = 1'b1;   // writes memory instead
+            end
+
+            OP_BR: begin
+                reg_write = 1'b0;   // branches write nothing
+                alu_src   = 1'b0;   // compare two registers
+                alu_op    = 4'd1;   // subtract
+                branch    = 1'b1;
             end
         endcase
     end
