@@ -50,7 +50,16 @@ module cpu (
                 .we(mem_write), .rdata(mem_rdata));
 
     // ---- program counter ----
-    wire take_branch = branch & zero;
+    wire branch_cond =
+        (funct3 == 3'b000) ?  zero              :  // beq
+        (funct3 == 3'b001) ? ~zero              :  // bne
+        (funct3 == 3'b100) ?  alu_result[0]     :  // blt
+        (funct3 == 3'b101) ? ~alu_result[0]     :  // bge
+        (funct3 == 3'b110) ?  alu_result[0]     :  // bltu
+        (funct3 == 3'b111) ? ~alu_result[0]     :  // bgeu
+                              1'b0;
+
+    wire take_branch = branch & branch_cond;
 
     always @(posedge clk) begin
         if (rst)              pc <= 32'd0;
