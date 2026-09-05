@@ -53,7 +53,7 @@ module cpu (
 
     // ---- data memory ----
     dmem u_dmem(.clk(clk), .addr(alu_result), .wdata(rs2_data),
-                .we(mem_write), .rdata(mem_rdata));
+                .we(mem_write), .funct3(funct3), .rdata(mem_rdata));
 
     // ---- program counter ----
     wire branch_cond =
