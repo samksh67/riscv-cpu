@@ -9,16 +9,19 @@ module control (
     output reg       mem_to_reg,
     output reg       branch,
     output reg       jump,
-    output reg       jalr
+    output reg       jalr,
+    output reg       lui,
+    output reg       auipc
 );
-    localparam OP_R = 7'b0110011;
-    localparam OP_I = 7'b0010011;
+    localparam OP_R     = 7'b0110011;
+    localparam OP_I     = 7'b0010011;
     localparam OP_LOAD  = 7'b0000011;
     localparam OP_STORE = 7'b0100011;
-    localparam OP_BR = 7'b1100011;
-    localparam OP_JAL  = 7'b1101111;
-    localparam OP_JALR = 7'b1100111;
-
+    localparam OP_BR    = 7'b1100011;
+    localparam OP_JAL   = 7'b1101111;
+    localparam OP_JALR  = 7'b1100111;
+    localparam OP_LUI   = 7'b0110111;
+    localparam OP_AUIPC = 7'b0010111;
 
     always @(*) begin
         // safe defaults
@@ -27,14 +30,16 @@ module control (
         alu_src    = 1'b0;
         mem_write  = 1'b0;
         mem_to_reg = 1'b0;
-        branch = 1'b0;
-        jump = 1'b0;
-        jalr = 1'b0;
+        branch     = 1'b0;
+        jump       = 1'b0;
+        jalr       = 1'b0;
+        lui        = 1'b0;
+        auipc      = 1'b0;
 
         case (opcode)
             OP_R: begin
                 reg_write = 1'b1;
-                alu_src   = 1'b0;          // second operand is rs2
+                alu_src   = 1'b0;
                 case (funct3)
                     3'b000: alu_op = (funct7[5]) ? 4'd1 : 4'd0;  // sub : add
                     3'b111: alu_op = 4'd2;   // and
@@ -49,7 +54,7 @@ module control (
 
             OP_I: begin
                 reg_write = 1'b1;
-                alu_src   = 1'b1;          // second operand is the immediate
+                alu_src   = 1'b1;
                 case (funct3)
                     3'b000: alu_op = 4'd0;   // addi
                     3'b111: alu_op = 4'd2;   // andi
@@ -63,17 +68,17 @@ module control (
             end
 
             OP_LOAD: begin
-                reg_write  = 1'b1;   // writes a register
-                alu_src    = 1'b1;   // address = rs1 + immediate
-                alu_op     = 4'd0;   // add
-                mem_to_reg = 1'b1;   // the value comes from memory, not the ALU
+                reg_write  = 1'b1;
+                alu_src    = 1'b1;
+                alu_op     = 4'd0;
+                mem_to_reg = 1'b1;
             end
 
             OP_STORE: begin
-                reg_write  = 1'b0;   // writes nothing to registers
-                alu_src    = 1'b1;   // address = rs1 + immediate
-                alu_op     = 4'd0;   // add
-                mem_write  = 1'b1;   // writes memory instead
+                reg_write = 1'b0;
+                alu_src   = 1'b1;
+                alu_op    = 4'd0;
+                mem_write = 1'b1;
             end
 
             OP_BR: begin
@@ -81,26 +86,36 @@ module control (
                 alu_src   = 1'b0;
                 branch    = 1'b1;
                 case (funct3)
-                    3'b000: alu_op = 4'd1;   // beq  - subtract, check zero
-                    3'b001: alu_op = 4'd1;   // bne  - subtract, check not zero
-                    3'b100: alu_op = 4'd8;   // blt  - slt
-                    3'b101: alu_op = 4'd8;   // bge  - slt, inverted
-                    3'b110: alu_op = 4'd9;   // bltu - sltu
-                    3'b111: alu_op = 4'd9;   // bgeu - sltu, inverted
+                    3'b000: alu_op = 4'd1;   // beq
+                    3'b001: alu_op = 4'd1;   // bne
+                    3'b100: alu_op = 4'd8;   // blt
+                    3'b101: alu_op = 4'd8;   // bge
+                    3'b110: alu_op = 4'd9;   // bltu
+                    3'b111: alu_op = 4'd9;   // bgeu
                 endcase
             end
 
             OP_JAL: begin
-                reg_write = 1'b1;   // saves return address
+                reg_write = 1'b1;
                 jump      = 1'b1;
             end
 
             OP_JALR: begin
                 reg_write = 1'b1;
                 alu_src   = 1'b1;
-                alu_op    = 4'd0;   // rs1 + imm
+                alu_op    = 4'd0;
                 jump      = 1'b1;
                 jalr      = 1'b1;
+            end
+
+            OP_LUI: begin
+                reg_write = 1'b1;
+                lui       = 1'b1;
+            end
+
+            OP_AUIPC: begin
+                reg_write = 1'b1;
+                auipc     = 1'b1;
             end
         endcase
     end
