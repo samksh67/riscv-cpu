@@ -23,6 +23,8 @@ module decoder (
     localparam OP_BR    = 7'b1100011;  // beq, bne...
     localparam OP_JAL  = 7'b1101111;
     localparam OP_JALR = 7'b1100111;
+    localparam OP_LUI   = 7'b0110111;
+    localparam OP_AUIPC = 7'b0010111;
 
     always @(*) begin
         case (opcode)
@@ -37,6 +39,9 @@ module decoder (
 
             OP_JAL:
                 imm = {{12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0};
+
+            OP_LUI, OP_AUIPC:
+                imm = {inst[31:12], 12'b0};
 
             default:
                 imm = 32'b0;   // R-type has no immediate

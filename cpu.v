@@ -20,12 +20,12 @@ module cpu (
 
     // ---- control ----
     wire [3:0] alu_op;
-    wire       reg_write, alu_src, mem_write, mem_to_reg, branch, jump, jalr;
+    wire       reg_write, alu_src, mem_write, mem_to_reg, branch, jump, jalr, lui, auipc;;
 
     control u_ctrl(.opcode(opcode), .funct3(funct3), .funct7(funct7),
                    .alu_op(alu_op), .reg_write(reg_write), .alu_src(alu_src),
                    .mem_write(mem_write), .mem_to_reg(mem_to_reg),
-                   .branch(branch), .jump(jump), .jalr(jalr));
+                   .branch(branch), .jump(jump), .jalr(jalr),.lui(lui), .auipc(auipc));
 
     // ---- register file ----
     wire [31:0] rs1_data, rs2_data;
@@ -34,6 +34,8 @@ module cpu (
 
     // three sources: return address (jump), memory (load), or ALU
     wire [31:0] write_data = jump       ? (pc + 32'd4) :
+                             lui        ?  imm         :
+                             auipc      ? (pc + imm)   :
                              mem_to_reg ?  mem_rdata   :
                                            alu_result;
 
