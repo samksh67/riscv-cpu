@@ -18,4 +18,5 @@ module regfile (
     always @(posedge clk)
         if (we && rd_addr != 5'd0)
             regs[rd_addr] <= rd_data;
+
 endmodule

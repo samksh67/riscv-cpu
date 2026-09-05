@@ -3,17 +3,23 @@ module control (
     input  [2:0] funct3,
     input  [6:0] funct7,
     output reg [3:0] alu_op,
-    output reg       reg_write,   // write result back to a register?
-    output reg       alu_src      // 0 = use rs2, 1 = use immediate
+    output reg       reg_write,
+    output reg       alu_src,
+    output reg       mem_write,
+    output reg       mem_to_reg
 );
     localparam OP_R = 7'b0110011;
     localparam OP_I = 7'b0010011;
+    localparam OP_LOAD  = 7'b0000011;
+    localparam OP_STORE = 7'b0100011;
 
     always @(*) begin
         // safe defaults
-        alu_op    = 4'd0;
-        reg_write = 1'b0;
-        alu_src   = 1'b0;
+        alu_op     = 4'd0;
+        reg_write  = 1'b0;
+        alu_src    = 1'b0;
+        mem_write  = 1'b0;
+        mem_to_reg = 1'b0;
 
         case (opcode)
             OP_R: begin
@@ -44,6 +50,20 @@ module control (
                     3'b010: alu_op = 4'd8;   // slti
                     3'b011: alu_op = 4'd9;   // sltiu
                 endcase
+            end
+
+            OP_LOAD: begin
+                reg_write  = 1'b1;   // writes a register
+                alu_src    = 1'b1;   // address = rs1 + immediate
+                alu_op     = 4'd0;   // add
+                mem_to_reg = 1'b1;   // the value comes from memory, not the ALU
+            end
+
+            OP_STORE: begin
+                reg_write  = 1'b0;   // writes nothing to registers
+                alu_src    = 1'b1;   // address = rs1 + immediate
+                alu_op     = 4'd0;   // add
+                mem_write  = 1'b1;   // writes memory instead
             end
         endcase
     end

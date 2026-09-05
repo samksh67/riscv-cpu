@@ -24,16 +24,19 @@ module cpu (
 
     // ---- control ----
     wire [3:0] alu_op;
-    wire       reg_write, alu_src;
+    wire       reg_write, alu_src, mem_write, mem_to_reg;
 
     control u_ctrl(.opcode(opcode), .funct3(funct3), .funct7(funct7),
-                   .alu_op(alu_op), .reg_write(reg_write), .alu_src(alu_src));
+                   .alu_op(alu_op), .reg_write(reg_write), .alu_src(alu_src),
+                   .mem_write(mem_write), .mem_to_reg(mem_to_reg));
 
     // ---- register file ----
     wire [31:0] rs1_data, rs2_data;
     wire [31:0] alu_result;
+    wire [31:0] mem_rdata;
+    wire [31:0] write_data = mem_to_reg ? mem_rdata : alu_result;
 
-    regfile u_rf(.clk(clk), .we(reg_write), .rd_addr(rd), .rd_data(alu_result),
+    regfile u_rf(.clk(clk), .we(reg_write), .rd_addr(rd), .rd_data(write_data),
                  .rs1_addr(rs1), .rs2_addr(rs2),
                  .rs1_data(rs1_data), .rs2_data(rs2_data));
 
@@ -42,4 +45,7 @@ module cpu (
 
     // ---- execute ----
     alu u_alu(.a(rs1_data), .b(alu_b), .op(alu_op), .result(alu_result));
+
+    dmem u_dmem(.clk(clk), .addr(alu_result), .wdata(rs2_data),
+                .we(mem_write), .rdata(mem_rdata));
 endmodule
