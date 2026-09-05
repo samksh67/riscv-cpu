@@ -2,12 +2,8 @@ module cpu (
     input clk,
     input rst
 );
-    // ---- program counter ----
+
     reg [31:0] pc;
-    always @(posedge clk) begin
-        if (rst) pc <= 32'd0;
-        else     pc <= pc + 32'd4;
-    end
 
     // ---- instruction memory (64 words) ----
     reg [31:0] imem [0:63];
@@ -24,11 +20,12 @@ module cpu (
 
     // ---- control ----
     wire [3:0] alu_op;
-    wire       reg_write, alu_src, mem_write, mem_to_reg;
+    wire       reg_write, alu_src, mem_write, mem_to_reg, branch;
 
     control u_ctrl(.opcode(opcode), .funct3(funct3), .funct7(funct7),
                    .alu_op(alu_op), .reg_write(reg_write), .alu_src(alu_src),
-                   .mem_write(mem_write), .mem_to_reg(mem_to_reg));
+                   .mem_write(mem_write), .mem_to_reg(mem_to_reg),
+                   .branch(branch));
 
     // ---- register file ----
     wire [31:0] rs1_data, rs2_data;
@@ -46,6 +43,18 @@ module cpu (
     // ---- execute ----
     alu u_alu(.a(rs1_data), .b(alu_b), .op(alu_op), .result(alu_result));
 
+    wire zero = (alu_result == 32'd0);
+
+    // ---- data memory ----
     dmem u_dmem(.clk(clk), .addr(alu_result), .wdata(rs2_data),
                 .we(mem_write), .rdata(mem_rdata));
+
+    // ---- program counter ----
+    wire take_branch = branch & zero;
+
+    always @(posedge clk) begin
+        if (rst)              pc <= 32'd0;
+        else if (take_branch) pc <= pc + imm;
+        else                  pc <= pc + 32'd4;
+    end
 endmodule
