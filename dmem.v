@@ -6,11 +6,11 @@ module dmem (
     input      [2:0]  funct3,
     output reg [31:0] rdata
 );
-    reg [31:0] mem [0:255];
+    reg [31:0] mem [0:15];
     integer i;
-    initial for (i = 0; i < 256; i = i + 1) mem[i] = 32'b0;
+    initial for (i = 0; i < 16; i = i + 1) mem[i] = 32'b0;
 
-    wire [7:0] widx = addr[9:2];    // which word
+    wire [3:0] widx = addr[5:2];    // which word
     wire [1:0] boff = addr[1:0];    // which byte inside it
     wire [31:0] word = mem[widx];
 
