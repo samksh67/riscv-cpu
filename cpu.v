@@ -1,13 +1,15 @@
 module cpu (
     input clk,
-    input rst
+    input rst,
+    output [31:0] dbg
 );
 
-    reg [31:0] pc;
+    reg [31:0] pc = 32'd0;
 
     // ---- instruction memory (64 words) ----
-    reg [31:0] imem [0:63];
-    wire [31:0] inst = imem[pc[31:2]];   // pc/4 = word index
+    reg [31:0] imem [0:15];
+    initial $readmemh("program.hex", imem);
+    wire [31:0] inst = imem[pc[5:2]];
 
     // ---- decode ----
     wire [6:0]  opcode, funct7;
@@ -20,19 +22,19 @@ module cpu (
 
     // ---- control ----
     wire [3:0] alu_op;
-    wire       reg_write, alu_src, mem_write, mem_to_reg, branch, jump, jalr, lui, auipc;;
+    wire       reg_write, alu_src, mem_write, mem_to_reg, branch, jump, jalr, lui, auipc;
 
     control u_ctrl(.opcode(opcode), .funct3(funct3), .funct7(funct7),
                    .alu_op(alu_op), .reg_write(reg_write), .alu_src(alu_src),
                    .mem_write(mem_write), .mem_to_reg(mem_to_reg),
-                   .branch(branch), .jump(jump), .jalr(jalr),.lui(lui), .auipc(auipc));
+                   .branch(branch), .jump(jump), .jalr(jalr),
+                   .lui(lui), .auipc(auipc));
 
     // ---- register file ----
     wire [31:0] rs1_data, rs2_data;
     wire [31:0] alu_result;
     wire [31:0] mem_rdata;
 
-    // three sources: return address (jump), memory (load), or ALU
     wire [31:0] write_data = jump       ? (pc + 32'd4) :
                              lui        ?  imm         :
                              auipc      ? (pc + imm)   :
@@ -41,28 +43,26 @@ module cpu (
 
     regfile u_rf(.clk(clk), .we(reg_write), .rd_addr(rd), .rd_data(write_data),
                  .rs1_addr(rs1), .rs2_addr(rs2),
-                 .rs1_data(rs1_data), .rs2_data(rs2_data));
+                 .rs1_data(rs1_data), .rs2_data(rs2_data),
+                 .dbg_data(dbg));
 
-    // ---- the mux: rs2 or immediate? ----
     wire [31:0] alu_b = alu_src ? imm : rs2_data;
 
-    // ---- execute ----
     alu u_alu(.a(rs1_data), .b(alu_b), .op(alu_op), .result(alu_result));
 
     wire zero = (alu_result == 32'd0);
 
-    // ---- data memory ----
     dmem u_dmem(.clk(clk), .addr(alu_result), .wdata(rs2_data),
                 .we(mem_write), .funct3(funct3), .rdata(mem_rdata));
 
     // ---- program counter ----
     wire branch_cond =
-        (funct3 == 3'b000) ?  zero              :  // beq
-        (funct3 == 3'b001) ? ~zero              :  // bne
-        (funct3 == 3'b100) ?  alu_result[0]     :  // blt
-        (funct3 == 3'b101) ? ~alu_result[0]     :  // bge
-        (funct3 == 3'b110) ?  alu_result[0]     :  // bltu
-        (funct3 == 3'b111) ? ~alu_result[0]     :  // bgeu
+        (funct3 == 3'b000) ?  zero          :
+        (funct3 == 3'b001) ? ~zero          :
+        (funct3 == 3'b100) ?  alu_result[0] :
+        (funct3 == 3'b101) ? ~alu_result[0] :
+        (funct3 == 3'b110) ?  alu_result[0] :
+        (funct3 == 3'b111) ? ~alu_result[0] :
                               1'b0;
 
     wire take_branch = branch & branch_cond;

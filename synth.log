@@ -1,0 +1,2456 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 16.0.0.16000026)
+
+-- Running command `read_verilog cpu.v decoder.v control.v regfile.v alu.v dmem.v; synth_ice40 -top cpu -json cpu.json' --
+
+1. Executing Verilog-2005 frontend: cpu.v
+Parsing Verilog input from `cpu.v' to AST representation.
+Generating RTLIL representation for module `\cpu'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: decoder.v
+Parsing Verilog input from `decoder.v' to AST representation.
+Generating RTLIL representation for module `\decoder'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: control.v
+Parsing Verilog input from `control.v' to AST representation.
+Generating RTLIL representation for module `\control'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: regfile.v
+Parsing Verilog input from `regfile.v' to AST representation.
+Generating RTLIL representation for module `\regfile'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: alu.v
+Parsing Verilog input from `alu.v' to AST representation.
+Generating RTLIL representation for module `\alu'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: dmem.v
+Parsing Verilog input from `dmem.v' to AST representation.
+Generating RTLIL representation for module `\dmem'.
+Successfully finished Verilog frontend.
+
+7. Executing SYNTH_ICE40 pass.
+
+7.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_sim.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\SB_IO'.
+Generating RTLIL representation for module `\SB_GB_IO'.
+Generating RTLIL representation for module `\SB_GB'.
+Generating RTLIL representation for module `\SB_LUT4'.
+Generating RTLIL representation for module `\SB_CARRY'.
+Generating RTLIL representation for module `\SB_DFF'.
+Generating RTLIL representation for module `\SB_DFFE'.
+Generating RTLIL representation for module `\SB_DFFSR'.
+Generating RTLIL representation for module `\SB_DFFR'.
+Generating RTLIL representation for module `\SB_DFFSS'.
+Generating RTLIL representation for module `\SB_DFFS'.
+Generating RTLIL representation for module `\SB_DFFESR'.
+Generating RTLIL representation for module `\SB_DFFER'.
+Generating RTLIL representation for module `\SB_DFFESS'.
+Generating RTLIL representation for module `\SB_DFFES'.
+Generating RTLIL representation for module `\SB_DFFN'.
+Generating RTLIL representation for module `\SB_DFFNE'.
+Generating RTLIL representation for module `\SB_DFFNSR'.
+Generating RTLIL representation for module `\SB_DFFNR'.
+Generating RTLIL representation for module `\SB_DFFNSS'.
+Generating RTLIL representation for module `\SB_DFFNS'.
+Generating RTLIL representation for module `\SB_DFFNESR'.
+Generating RTLIL representation for module `\SB_DFFNER'.
+Generating RTLIL representation for module `\SB_DFFNESS'.
+Generating RTLIL representation for module `\SB_DFFNES'.
+Generating RTLIL representation for module `\SB_RAM40_4K'.
+Generating RTLIL representation for module `\SB_RAM40_4KNR'.
+Generating RTLIL representation for module `\SB_RAM40_4KNW'.
+Generating RTLIL representation for module `\SB_RAM40_4KNRNW'.
+Generating RTLIL representation for module `\ICESTORM_LC'.
+Generating RTLIL representation for module `\SB_PLL40_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2F_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_2F_PAD'.
+Generating RTLIL representation for module `\SB_WARMBOOT'.
+Generating RTLIL representation for module `\SB_SPRAM256KA'.
+Generating RTLIL representation for module `\SB_HFOSC'.
+Generating RTLIL representation for module `\SB_LFOSC'.
+Generating RTLIL representation for module `\SB_RGBA_DRV'.
+Generating RTLIL representation for module `\SB_LED_DRV_CUR'.
+Generating RTLIL representation for module `\SB_RGB_DRV'.
+Generating RTLIL representation for module `\SB_I2C'.
+Generating RTLIL representation for module `\SB_SPI'.
+Generating RTLIL representation for module `\SB_LEDDA_IP'.
+Generating RTLIL representation for module `\SB_FILTER_50NS'.
+Generating RTLIL representation for module `\SB_IO_I3C'.
+Generating RTLIL representation for module `\SB_IO_OD'.
+Generating RTLIL representation for module `\SB_MAC16'.
+Generating RTLIL representation for module `\ICESTORM_RAM'.
+Successfully finished Verilog frontend.
+
+7.2. Executing HIERARCHY pass (managing design hierarchy).
+
+7.2.1. Analyzing design hierarchy..
+Top module:  \cpu
+Used module:     \dmem
+Used module:     \alu
+Used module:     \regfile
+Used module:     \control
+Used module:     \decoder
+
+7.2.2. Analyzing design hierarchy..
+Top module:  \cpu
+Used module:     \dmem
+Used module:     \alu
+Used module:     \regfile
+Used module:     \control
+Used module:     \decoder
+Removed 0 unused modules.
+
+7.3. Executing PROC pass (convert processes to netlists).
+
+7.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `cpu.$proc$cpu.v:11$33'.
+Cleaned up 0 empty switches.
+
+7.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$dmem.v:59$429 in module dmem.
+Removed 1 dead cases from process $proc$dmem.v:44$428 in module dmem.
+Marked 3 switch rules as full_case in process $proc$dmem.v:44$428 in module dmem.
+Removed 1 dead cases from process $proc$dmem.v:21$426 in module dmem.
+Marked 2 switch rules as full_case in process $proc$dmem.v:21$426 in module dmem.
+Marked 1 switch rules as full_case in process $proc$alu.v:19$154 in module alu.
+Marked 1 switch rules as full_case in process $proc$regfile.v:20$80 in module regfile.
+Removed 2 dead cases from process $proc$control.v:26$35 in module control.
+Marked 4 switch rules as full_case in process $proc$control.v:26$35 in module control.
+Marked 1 switch rules as full_case in process $proc$decoder.v:29$34 in module decoder.
+Marked 4 switch rules as full_case in process $proc$cpu.v:70$26 in module cpu.
+Removed a total of 4 dead cases.
+
+7.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 312 assignments to connections.
+
+7.3.4. Executing PROC_INIT pass (extract init attributes).
+
+7.3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+7.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~17 debug messages>
+
+7.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\dmem.$proc$dmem.v:11$692'.
+Creating decoders for process `\dmem.$proc$dmem.v:59$429'.
+     1/3: $1$memwr$\mem$dmem.v:60$424_EN[31:0]$435
+     2/3: $1$memwr$\mem$dmem.v:60$424_DATA[31:0]$434
+     3/3: $1$memwr$\mem$dmem.v:60$424_ADDR[7:0]$433
+Creating decoders for process `\dmem.$proc$dmem.v:44$428'.
+     1/7: $3\merged[31:0] [31:16]
+     2/7: $3\merged[31:0] [15:0]
+     3/7: $2\merged[31:0] [23:16]
+     4/7: $2\merged[31:0] [15:8]
+     5/7: $2\merged[31:0] [31:24]
+     6/7: $2\merged[31:0] [7:0]
+     7/7: $1\merged[31:0]
+Creating decoders for process `\dmem.$proc$dmem.v:21$426'.
+     1/2: $1\rdata[31:0]
+     2/2: $1\byte_sel[7:0]
+Creating decoders for process `\alu.$proc$alu.v:19$154'.
+     1/1: $1\result[31:0]
+Creating decoders for process `\regfile.$proc$regfile.v:14$121'.
+Creating decoders for process `\regfile.$proc$regfile.v:20$80'.
+     1/3: $1$memwr$\regs$regfile.v:22$72_EN[31:0]$88
+     2/3: $1$memwr$\regs$regfile.v:22$72_DATA[31:0]$87
+     3/3: $1$memwr$\regs$regfile.v:22$72_ADDR[4:0]$86
+Creating decoders for process `\control.$proc$control.v:26$35'.
+     1/13: $4\alu_op[3:0]
+     2/13: $3\alu_op[3:0]
+     3/13: $2\alu_op[3:0]
+     4/13: $1\alu_op[3:0]
+     5/13: $1\alu_src[0:0]
+     6/13: $1\reg_write[0:0]
+     7/13: $1\auipc[0:0]
+     8/13: $1\lui[0:0]
+     9/13: $1\jalr[0:0]
+    10/13: $1\jump[0:0]
+    11/13: $1\branch[0:0]
+    12/13: $1\mem_to_reg[0:0]
+    13/13: $1\mem_write[0:0]
+Creating decoders for process `\decoder.$proc$decoder.v:29$34'.
+     1/1: $1\imm[31:0]
+Creating decoders for process `\cpu.$proc$cpu.v:70$26'.
+     1/1: $0\pc[31:0]
+
+7.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\dmem.\i' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$168_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$169_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$170_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$171_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$172_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$173_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$174_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$175_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$176_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$177_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$178_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$179_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$180_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$181_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$182_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$183_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$184_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$185_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$186_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$187_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$188_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$189_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$190_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$191_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$192_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$193_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$194_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$195_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$196_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$197_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$198_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$199_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$200_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$201_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$202_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$203_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$204_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$205_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$206_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$207_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$208_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$209_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$210_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$211_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$212_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$213_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$214_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$215_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$216_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$217_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$218_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$219_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$220_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$221_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$222_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$223_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$224_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$225_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$226_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$227_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$228_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$229_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$230_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$231_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$232_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$233_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$234_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$235_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$236_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$237_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$238_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$239_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$240_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$241_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$242_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$243_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$244_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$245_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$246_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$247_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$248_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$249_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$250_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$251_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$252_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$253_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$254_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$255_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$256_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$257_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$258_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$259_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$260_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$261_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$262_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$263_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$264_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$265_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$266_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$267_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$268_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$269_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$270_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$271_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$272_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$273_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$274_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$275_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$276_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$277_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$278_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$279_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$280_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$281_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$282_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$283_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$284_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$285_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$286_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$287_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$288_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$289_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$290_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$291_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$292_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$293_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$294_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$295_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$296_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$297_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$298_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$299_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$300_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$301_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$302_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$303_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$304_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$305_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$306_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$307_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$308_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$309_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$310_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$311_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$312_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$313_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$314_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$315_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$316_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$317_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$318_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$319_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$320_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$321_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$322_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$323_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$324_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$325_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$326_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$327_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$328_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$329_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$330_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$331_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$332_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$333_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$334_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$335_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$336_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$337_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$338_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$339_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$340_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$341_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$342_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$343_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$344_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$345_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$346_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$347_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$348_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$349_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$350_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$351_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$352_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$353_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$354_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$355_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$356_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$357_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$358_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$359_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$360_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$361_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$362_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$363_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$364_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$365_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$366_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$367_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$368_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$369_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$370_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$371_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$372_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$373_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$374_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$375_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$376_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$377_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$378_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$379_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$380_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$381_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$382_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$383_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$384_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$385_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$386_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$387_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$388_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$389_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$390_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$391_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$392_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$393_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$394_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$395_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$396_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$397_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$398_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$399_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$400_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$401_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$402_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$403_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$404_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$405_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$406_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$407_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$408_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$409_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$410_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$411_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$412_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$413_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$414_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$415_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$416_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$417_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$418_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$419_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$420_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$421_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$422_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.$memwr$\mem$dmem.v:11$423_EN' from process `\dmem.$proc$dmem.v:11$692'.
+No latch inferred for signal `\dmem.\merged' from process `\dmem.$proc$dmem.v:44$428'.
+No latch inferred for signal `\dmem.\rdata' from process `\dmem.$proc$dmem.v:21$426'.
+No latch inferred for signal `\dmem.\byte_sel' from process `\dmem.$proc$dmem.v:21$426'.
+No latch inferred for signal `\dmem.\half_sel' from process `\dmem.$proc$dmem.v:21$426'.
+No latch inferred for signal `\alu.\result' from process `\alu.$proc$alu.v:19$154'.
+No latch inferred for signal `\regfile.\i' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$40_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$41_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$42_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$43_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$44_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$45_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$46_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$47_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$48_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$49_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$50_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$51_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$52_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$53_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$54_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$55_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$56_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$57_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$58_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$59_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$60_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$61_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$62_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$63_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$64_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$65_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$66_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$67_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$68_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$69_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$70_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\regfile.$memwr$\regs$regfile.v:14$71_EN' from process `\regfile.$proc$regfile.v:14$121'.
+No latch inferred for signal `\control.\alu_op' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\reg_write' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\alu_src' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\mem_write' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\mem_to_reg' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\branch' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\jump' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\jalr' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\lui' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\control.\auipc' from process `\control.$proc$control.v:26$35'.
+No latch inferred for signal `\decoder.\imm' from process `\decoder.$proc$decoder.v:29$34'.
+
+7.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\dmem.$memwr$\mem$dmem.v:60$424_ADDR' using process `\dmem.$proc$dmem.v:59$429'.
+  created $dff cell `$procdff$1563' with positive edge clock.
+Creating register for signal `\dmem.$memwr$\mem$dmem.v:60$424_DATA' using process `\dmem.$proc$dmem.v:59$429'.
+  created $dff cell `$procdff$1564' with positive edge clock.
+Creating register for signal `\dmem.$memwr$\mem$dmem.v:60$424_EN' using process `\dmem.$proc$dmem.v:59$429'.
+  created $dff cell `$procdff$1565' with positive edge clock.
+Creating register for signal `\regfile.$memwr$\regs$regfile.v:22$72_ADDR' using process `\regfile.$proc$regfile.v:20$80'.
+  created $dff cell `$procdff$1566' with positive edge clock.
+Creating register for signal `\regfile.$memwr$\regs$regfile.v:22$72_DATA' using process `\regfile.$proc$regfile.v:20$80'.
+  created $dff cell `$procdff$1567' with positive edge clock.
+Creating register for signal `\regfile.$memwr$\regs$regfile.v:22$72_EN' using process `\regfile.$proc$regfile.v:20$80'.
+  created $dff cell `$procdff$1568' with positive edge clock.
+Creating register for signal `\cpu.\pc' using process `\cpu.$proc$cpu.v:70$26'.
+  created $dff cell `$procdff$1569' with positive edge clock.
+
+7.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+7.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `dmem.$proc$dmem.v:11$692'.
+Found and cleaned up 1 empty switch in `\dmem.$proc$dmem.v:59$429'.
+Removing empty process `dmem.$proc$dmem.v:59$429'.
+Found and cleaned up 3 empty switches in `\dmem.$proc$dmem.v:44$428'.
+Removing empty process `dmem.$proc$dmem.v:44$428'.
+Found and cleaned up 2 empty switches in `\dmem.$proc$dmem.v:21$426'.
+Removing empty process `dmem.$proc$dmem.v:21$426'.
+Found and cleaned up 1 empty switch in `\alu.$proc$alu.v:19$154'.
+Removing empty process `alu.$proc$alu.v:19$154'.
+Removing empty process `regfile.$proc$regfile.v:14$121'.
+Found and cleaned up 1 empty switch in `\regfile.$proc$regfile.v:20$80'.
+Removing empty process `regfile.$proc$regfile.v:20$80'.
+Found and cleaned up 4 empty switches in `\control.$proc$control.v:26$35'.
+Removing empty process `control.$proc$control.v:26$35'.
+Found and cleaned up 1 empty switch in `\decoder.$proc$decoder.v:29$34'.
+Removing empty process `decoder.$proc$decoder.v:29$34'.
+Found and cleaned up 4 empty switches in `\cpu.$proc$cpu.v:70$26'.
+Removing empty process `cpu.$proc$cpu.v:70$26'.
+Cleaned up 17 empty switches.
+
+7.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dmem.
+<suppressed ~11 debug messages>
+Optimizing module alu.
+<suppressed ~1 debug messages>
+Optimizing module regfile.
+<suppressed ~3 debug messages>
+Optimizing module control.
+<suppressed ~3 debug messages>
+Optimizing module decoder.
+Optimizing module cpu.
+<suppressed ~3 debug messages>
+
+7.4. Executing CHECK pass (checking for obvious problems).
+Checking module dmem...
+Checking module alu...
+Checking module regfile...
+Checking module control...
+Checking module decoder...
+Checking module cpu...
+Found and reported 0 problems.
+
+7.5. Executing FLATTEN pass (flatten design).
+Deleting now unused module dmem.
+Deleting now unused module alu.
+Deleting now unused module regfile.
+Deleting now unused module control.
+Deleting now unused module decoder.
+<suppressed ~5 debug messages>
+
+7.6. Executing TRIBUF pass.
+
+7.7. Executing DEMINOUT pass (demote inout ports to input or output).
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 6 unused cells and 676 unused wires.
+<suppressed ~7 debug messages>
+
+7.10. Executing CHECK pass (checking for obvious problems).
+Checking module cpu...
+Found and reported 0 problems.
+
+7.11. Executing OPT pass (performing simple optimizations).
+
+7.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 494 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 418 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+<suppressed ~228 debug messages>
+Removed a total of 76 cells.
+
+7.11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\u_dmem.$procmux$1342.
+    dead port 2/2 on $mux $flatten\u_dmem.$procmux$1348.
+    dead port 2/2 on $mux $flatten\u_dmem.$procmux$1357.
+    dead port 2/2 on $mux $flatten\u_dmem.$procmux$1366.
+    dead port 2/2 on $mux $flatten\u_dmem.$procmux$1375.
+    dead port 2/2 on $mux $flatten\u_dmem.$procmux$1384.
+    dead port 2/2 on $mux $flatten\u_ctrl.$procmux$1435.
+    dead port 2/2 on $mux $flatten\u_ctrl.$procmux$1454.
+    dead port 2/2 on $mux $flatten\u_ctrl.$procmux$1474.
+Removed 9 multiplexer ports.
+<suppressed ~99 debug messages>
+
+7.11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+    Consolidated identical input bits for $mux cell $flatten\u_dmem.$procmux$1330:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432
+      New ports: A=1'0, B=1'1, Y=$flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0]
+      New connections: $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [31:1] = { $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] $flatten\u_dmem.$0$memwr$\mem$dmem.v:60$424_EN[31:0]$432 [0] }
+    New ctrl vector for $pmux cell $flatten\u_dmem.$procmux$1352: { $auto$opt_reduce.cc:137:opt_pmux$1578 $flatten\u_dmem.$procmux$1354_CMP }
+    New ctrl vector for $pmux cell $flatten\u_dmem.$procmux$1361: { $auto$opt_reduce.cc:137:opt_pmux$1580 $flatten\u_dmem.$procmux$1355_CMP }
+    New ctrl vector for $pmux cell $flatten\u_dmem.$procmux$1370: { $flatten\u_dmem.$procmux$1353_CMP $auto$opt_reduce.cc:137:opt_pmux$1582 }
+    New ctrl vector for $pmux cell $flatten\u_dmem.$procmux$1379: { $auto$opt_reduce.cc:137:opt_pmux$1584 $flatten\u_dmem.$procmux$1356_CMP }
+    Consolidated identical input bits for $mux cell $flatten\u_rf.$procmux$1414:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83
+      New ports: A=1'0, B=1'1, Y=$flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0]
+      New connections: $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [31:1] = { $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] $flatten\u_rf.$0$memwr$\regs$regfile.v:22$72_EN[31:0]$83 [0] }
+    New ctrl vector for $pmux cell $flatten\u_ctrl.$procmux$1428: { $auto$opt_reduce.cc:137:opt_pmux$1590 $auto$opt_reduce.cc:137:opt_pmux$1588 $auto$opt_reduce.cc:137:opt_pmux$1586 }
+    New ctrl vector for $pmux cell $flatten\u_ctrl.$procmux$1488: $auto$opt_reduce.cc:137:opt_pmux$1592
+    New ctrl vector for $pmux cell $flatten\u_ctrl.$procmux$1494: $auto$opt_reduce.cc:137:opt_pmux$1594
+    New ctrl vector for $pmux cell $flatten\u_ctrl.$procmux$1517: $auto$opt_reduce.cc:137:opt_pmux$1596
+  Optimizing cells in module \cpu.
+Performed a total of 10 changes.
+
+7.11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 419 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 418 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+7.11.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 0 unused cells and 83 unused wires.
+<suppressed ~1 debug messages>
+
+7.11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~92 debug messages>
+
+7.11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+Performed a total of 0 changes.
+
+7.11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 418 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.11.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.11.16. Finished fast OPT passes. (There is nothing left to do.)
+
+7.12. Executing FSM pass (extract and optimize FSM).
+
+7.12.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+7.12.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+7.12.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+7.12.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.12.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+7.12.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+7.12.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+7.12.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+7.13. Executing OPT pass (performing simple optimizations).
+
+7.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 418 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~92 debug messages>
+
+7.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+Performed a total of 0 changes.
+
+7.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 418 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.13.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$1569 ($dff) from module cpu (D = $procmux$1558_Y [31:1], Q = \pc [31:1], rval = 31'0000000000000000000000000000000).
+Adding SRST signal on $procdff$1569 ($dff) from module cpu (D = $procmux$1555_Y [0], Q = \pc [0], rval = 1'0).
+
+7.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 1 unused cells and 1 unused wires.
+<suppressed ~2 debug messages>
+
+7.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.13.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.13.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~92 debug messages>
+
+7.13.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+Performed a total of 0 changes.
+
+7.13.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 419 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.13.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.13.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.13.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.13.16. Finished fast OPT passes. (There is nothing left to do.)
+
+7.14. Executing WREDUCE pass (reducing word size of cells).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$525 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$526 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$527 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$528 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$529 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$530 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$531 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$532 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$533 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$534 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$535 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$536 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$537 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$538 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$539 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$540 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$541 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$542 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$543 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$544 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$545 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$546 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$547 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$548 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$549 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$550 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$551 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$552 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$553 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$554 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$555 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$556 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$557 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$558 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$559 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$560 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$561 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$562 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$563 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$564 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$565 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$566 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$567 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$568 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$569 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$570 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$571 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$572 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$573 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$574 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$575 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$576 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$577 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$578 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$579 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$580 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$581 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$582 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$583 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$584 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$585 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$586 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$587 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$588 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$589 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$590 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$591 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$592 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$593 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$594 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$595 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$596 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$597 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$598 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$599 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$600 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$601 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$602 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$603 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$604 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$605 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$606 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$607 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$608 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$609 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$610 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$611 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$612 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$613 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$614 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$615 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$616 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$617 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$618 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$619 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$620 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$621 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$622 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$623 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$624 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$625 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$626 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$627 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$628 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$629 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$630 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$631 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$632 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$633 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$634 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$635 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$636 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$637 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$638 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$639 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$640 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$641 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$642 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$643 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$644 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$645 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$646 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$647 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$648 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$649 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$650 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$651 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$652 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$653 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$654 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$655 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$656 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$657 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$658 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$659 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$660 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$661 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$662 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$663 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$664 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$665 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$666 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$667 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$668 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$669 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$670 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$671 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$672 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$673 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$674 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$675 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$676 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$677 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$678 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$679 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$680 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$681 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$682 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$683 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$684 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$685 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$686 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$687 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$688 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$689 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$690 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$691 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$516 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$440 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$517 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$518 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$441 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$442 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$443 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$444 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$445 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$519 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$446 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$447 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$448 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$449 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$450 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$520 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$451 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$452 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$453 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$454 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$455 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$521 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$456 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$457 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$458 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$459 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$460 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$461 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$462 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$463 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$439 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$438 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$437 (u_dmem.mem).
+Removed top 27 address bits (of 32) from memory read port cpu.$flatten\u_rf.$memrd$\regs$regfile.v:18$79 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$89 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$90 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$91 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$92 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$93 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$94 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$95 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$96 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$97 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$98 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$99 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$100 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$101 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$102 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$103 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$104 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$105 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$106 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$107 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$108 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$109 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$110 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$111 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$112 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$113 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$114 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$115 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$116 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$117 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$118 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$119 (u_rf.regs).
+Removed top 27 address bits (of 32) from memory init port cpu.$flatten\u_rf.$meminit$\regs$regfile.v:14$120 (u_rf.regs).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$436 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$464 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$465 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$466 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$467 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$522 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$468 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$469 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$470 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$471 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$472 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$473 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$523 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$474 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$475 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$476 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$477 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$478 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$479 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$480 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$481 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$524 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$482 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$483 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$484 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$485 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$486 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$487 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$488 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$489 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$490 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$491 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$492 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$493 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$494 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$495 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$496 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$497 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$498 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$499 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$500 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$501 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$502 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$503 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$504 (u_dmem.mem).
+Removed top 26 address bits (of 32) from memory init port cpu.$meminit$\imem$cpu.v:11$32 (imem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$505 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$506 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$507 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$508 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$509 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$510 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$511 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$512 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$513 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$514 (u_dmem.mem).
+Removed top 24 address bits (of 32) from memory init port cpu.$flatten\u_dmem.$meminit$\mem$dmem.v:11$515 (u_dmem.mem).
+Removed top 24 address bits (of 30) from memory read port cpu.$memrd$\imem$cpu.v:12$1 (imem).
+Removed top 29 bits (of 32) from port B of cell cpu.$add$cpu.v:75$31 ($add).
+Removed top 1 bits (of 7) from port B of cell cpu.$flatten\u_ctrl.$procmux$1496_CMP0 ($eq).
+Removed top 2 bits (of 7) from port B of cell cpu.$flatten\u_ctrl.$procmux$1495_CMP0 ($eq).
+Removed top 5 bits (of 7) from port B of cell cpu.$flatten\u_ctrl.$procmux$1491_CMP0 ($eq).
+Removed top 1 bits (of 7) from port B of cell cpu.$flatten\u_ctrl.$procmux$1490_CMP0 ($eq).
+Removed top 1 bits (of 7) from port B of cell cpu.$flatten\u_ctrl.$procmux$1475_CMP0 ($eq).
+Removed top 2 bits (of 7) from port B of cell cpu.$flatten\u_ctrl.$procmux$1455_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell cpu.$flatten\u_ctrl.$procmux$1447_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell cpu.$flatten\u_ctrl.$procmux$1446_CMP0 ($eq).
+Removed top 3 bits (of 4) from mux cell cpu.$flatten\u_ctrl.$ternary$control.v:49$37 ($mux).
+Removed top 3 bits (of 4) from mux cell cpu.$flatten\u_ctrl.$ternary$control.v:44$36 ($mux).
+Removed top 3 bits (of 4) from port B of cell cpu.$flatten\u_alu.$procmux$1411_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell cpu.$flatten\u_alu.$procmux$1410_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell cpu.$flatten\u_alu.$procmux$1409_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell cpu.$flatten\u_alu.$procmux$1408_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell cpu.$flatten\u_alu.$procmux$1407_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell cpu.$flatten\u_alu.$procmux$1406_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell cpu.$flatten\u_alu.$procmux$1405_CMP0 ($eq).
+Removed top 31 bits (of 32) from mux cell cpu.$flatten\u_alu.$ternary$alu.v:30$166 ($mux).
+Removed top 31 bits (of 32) from mux cell cpu.$flatten\u_alu.$ternary$alu.v:29$164 ($mux).
+Removed top 1 bits (of 2) from port B of cell cpu.$flatten\u_dmem.$procmux$1355_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell cpu.$flatten\u_dmem.$procmux$1343_CMP0 ($eq).
+Removed top 3 bits (of 4) from wire cpu.$flatten\u_ctrl.$ternary$control.v:44$36_Y.
+Removed top 3 bits (of 4) from wire cpu.$flatten\u_ctrl.$ternary$control.v:49$37_Y.
+Removed top 31 bits (of 32) from wire cpu.$flatten\u_alu.$ternary$alu.v:30$166_Y.
+Removed top 31 bits (of 32) from wire cpu.$flatten\u_alu.$ternary$alu.v:29$164_Y.
+
+7.15. Executing PEEPOPT pass (run peephole optimizers).
+
+7.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+7.17. Executing SHARE pass (SAT-based resource sharing).
+Found 6 cells in module cpu that may be considered for resource sharing.
+  Analyzing resource sharing options for $flatten\u_dmem.$memrd$\mem$dmem.v:15$425 ($memrd):
+    Found 16 activation_patterns using ctrl signal { $flatten\u_dmem.$procmux$1353_CMP $flatten\u_dmem.$procmux$1354_CMP $flatten\u_dmem.$procmux$1355_CMP $flatten\u_dmem.$procmux$1356_CMP $flatten\u_rf.$logic_and$regfile.v:21$85_Y $eq$cpu.v:63$14_Y $eq$cpu.v:62$13_Y $eq$cpu.v:61$11_Y $eq$cpu.v:60$10_Y \auipc \lui \jump \mem_to_reg \mem_write $auto$opt_reduce.cc:137:opt_pmux$1578 $auto$opt_reduce.cc:137:opt_pmux$1580 $auto$opt_reduce.cc:137:opt_pmux$1582 $auto$opt_reduce.cc:137:opt_pmux$1584 }.
+    No candidates found.
+  Analyzing resource sharing options for $flatten\u_rf.$memrd$\regs$regfile.v:17$77 ($memrd):
+    Found 16 activation_patterns using ctrl signal { $flatten\u_dmem.$procmux$1353_CMP $flatten\u_dmem.$procmux$1354_CMP $flatten\u_dmem.$procmux$1355_CMP $flatten\u_dmem.$procmux$1356_CMP $flatten\u_alu.$procmux$1403_CMP $flatten\u_alu.$procmux$1404_CMP $flatten\u_alu.$procmux$1405_CMP $flatten\u_alu.$procmux$1406_CMP $flatten\u_alu.$procmux$1407_CMP $flatten\u_alu.$procmux$1408_CMP $flatten\u_alu.$procmux$1409_CMP $flatten\u_alu.$procmux$1410_CMP $flatten\u_alu.$procmux$1411_CMP $flatten\u_alu.$procmux$1412_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y $eq$cpu.v:61$11_Y $eq$cpu.v:60$10_Y \mem_write \alu_src }.
+    Found 1 candidates: $flatten\u_rf.$memrd$\regs$regfile.v:16$74
+    Analyzing resource sharing with $flatten\u_rf.$memrd$\regs$regfile.v:16$74 ($memrd):
+      Found 11 activation_patterns using ctrl signal { $flatten\u_alu.$procmux$1403_CMP $flatten\u_alu.$procmux$1404_CMP $flatten\u_alu.$procmux$1405_CMP $flatten\u_alu.$procmux$1406_CMP $flatten\u_alu.$procmux$1407_CMP $flatten\u_alu.$procmux$1408_CMP $flatten\u_alu.$procmux$1409_CMP $flatten\u_alu.$procmux$1410_CMP $flatten\u_alu.$procmux$1411_CMP $flatten\u_alu.$procmux$1412_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y \jalr }.
+      Forbidden control signals for this pair of cells: { $flatten\u_dmem.$procmux$1353_CMP $flatten\u_dmem.$procmux$1354_CMP $flatten\u_dmem.$procmux$1355_CMP $flatten\u_dmem.$procmux$1356_CMP $flatten\u_alu.$lt$alu.v:29$163_Y $flatten\u_alu.$lt$alu.v:30$165_Y \take_branch \alu_result [1] $auto$opt_reduce.cc:137:opt_pmux$1578 $auto$opt_reduce.cc:137:opt_pmux$1580 $auto$opt_reduce.cc:137:opt_pmux$1582 $auto$opt_reduce.cc:137:opt_pmux$1584 }
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1407_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1406_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1405_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1411_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1410_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1409_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1408_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1404_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1403_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_alu.$procmux$1412_CMP $flatten\u_rf.$eq$regfile.v:17$76_Y \alu_src } = 3'100
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_rf.$eq$regfile.v:17$76_Y $eq$cpu.v:61$11_Y $eq$cpu.v:60$10_Y \mem_write } = 4'0001
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_rf.$eq$regfile.v:17$76_Y $eq$cpu.v:61$11_Y \mem_write } = 3'011
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:17$77: { $flatten\u_rf.$eq$regfile.v:17$76_Y $eq$cpu.v:60$10_Y \mem_write } = 3'011
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1412_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_rf.$eq$regfile.v:16$73_Y \jalr } = 2'01
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1403_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1404_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1405_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1406_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1407_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1408_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1409_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1410_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Activation pattern for cell $flatten\u_rf.$memrd$\regs$regfile.v:16$74: { $flatten\u_alu.$procmux$1411_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y } = 2'10
+      Size of SAT problem: 39 cells, 548 variables, 1610 clauses
+      According to the SAT solver this pair of cells can not be shared.
+      Model from SAT solver: { $flatten\u_alu.$procmux$1403_CMP $flatten\u_alu.$procmux$1404_CMP $flatten\u_alu.$procmux$1405_CMP $flatten\u_alu.$procmux$1406_CMP $flatten\u_alu.$procmux$1407_CMP $flatten\u_alu.$procmux$1408_CMP $flatten\u_alu.$procmux$1409_CMP $flatten\u_alu.$procmux$1410_CMP $flatten\u_alu.$procmux$1411_CMP $flatten\u_alu.$procmux$1412_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y $flatten\u_rf.$eq$regfile.v:17$76_Y $eq$cpu.v:61$11_Y $eq$cpu.v:60$10_Y \jalr \mem_write \alu_src } = 17'00000000010010000
+  Analyzing resource sharing options for $flatten\u_rf.$memrd$\regs$regfile.v:16$74 ($memrd):
+    Found 11 activation_patterns using ctrl signal { $flatten\u_alu.$procmux$1403_CMP $flatten\u_alu.$procmux$1404_CMP $flatten\u_alu.$procmux$1405_CMP $flatten\u_alu.$procmux$1406_CMP $flatten\u_alu.$procmux$1407_CMP $flatten\u_alu.$procmux$1408_CMP $flatten\u_alu.$procmux$1409_CMP $flatten\u_alu.$procmux$1410_CMP $flatten\u_alu.$procmux$1411_CMP $flatten\u_alu.$procmux$1412_CMP $flatten\u_rf.$eq$regfile.v:16$73_Y \jalr }.
+    No candidates found.
+  Analyzing resource sharing options for $flatten\u_alu.$sshr$alu.v:28$162 ($sshr):
+    Found 1 activation_patterns using ctrl signal $flatten\u_alu.$procmux$1405_CMP.
+    No candidates found.
+  Analyzing resource sharing options for $flatten\u_alu.$shr$alu.v:27$161 ($shr):
+    Found 1 activation_patterns using ctrl signal $flatten\u_alu.$procmux$1406_CMP.
+    No candidates found.
+  Analyzing resource sharing options for $flatten\u_alu.$shl$alu.v:26$160 ($shl):
+    Found 1 activation_patterns using ctrl signal $flatten\u_alu.$procmux$1407_CMP.
+    No candidates found.
+
+7.18. Executing TECHMAP pass (map to technology primitives).
+
+7.18.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+7.18.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~62 debug messages>
+
+7.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.20. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.21. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module cpu:
+  creating $macc model for $flatten\u_alu.$sub$alu.v:22$156 ($sub).
+  creating $macc model for $add$cpu.v:75$31 ($add).
+  creating $macc model for $add$cpu.v:74$30 ($add).
+  creating $macc model for $add$cpu.v:72$27 ($add).
+  creating $macc model for $flatten\u_alu.$add$alu.v:21$155 ($add).
+  creating $alu model for $macc $flatten\u_alu.$add$alu.v:21$155.
+  creating $alu model for $macc $add$cpu.v:72$27.
+  creating $alu model for $macc $add$cpu.v:74$30.
+  creating $alu model for $macc $add$cpu.v:75$31.
+  creating $alu model for $macc $flatten\u_alu.$sub$alu.v:22$156.
+  creating $alu model for $flatten\u_alu.$lt$alu.v:29$163 ($lt): merged with $flatten\u_alu.$sub$alu.v:22$156.
+  creating $alu model for $flatten\u_alu.$lt$alu.v:30$165 ($lt): merged with $flatten\u_alu.$sub$alu.v:22$156.
+  creating $alu cell for $add$cpu.v:75$31: $auto$alumacc.cc:548:replace_alu$1606
+  creating $alu cell for $add$cpu.v:74$30: $auto$alumacc.cc:548:replace_alu$1609
+  creating $alu cell for $add$cpu.v:72$27: $auto$alumacc.cc:548:replace_alu$1612
+  creating $alu cell for $flatten\u_alu.$sub$alu.v:22$156, $flatten\u_alu.$lt$alu.v:29$163, $flatten\u_alu.$lt$alu.v:30$165: $auto$alumacc.cc:548:replace_alu$1615
+  creating $alu cell for $flatten\u_alu.$add$alu.v:21$155: $auto$alumacc.cc:548:replace_alu$1624
+  created 5 $alu and 0 $macc cells.
+
+7.22. Executing OPT pass (performing simple optimizations).
+
+7.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+<suppressed ~1 debug messages>
+
+7.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 420 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.22.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~92 debug messages>
+
+7.22.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+Performed a total of 0 changes.
+
+7.22.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 420 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 419 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+7.22.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.22.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 1 unused cells and 4 unused wires.
+<suppressed ~2 debug messages>
+
+7.22.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.22.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.22.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~92 debug messages>
+
+7.22.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+Performed a total of 0 changes.
+
+7.22.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 418 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.22.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.22.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.22.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.22.16. Finished fast OPT passes. (There is nothing left to do.)
+
+7.23. Executing MEMORY pass.
+
+7.23.1. Executing OPT_MEM pass (optimize memories).
+cpu.imem: removing const-1 lane 0
+cpu.imem: removing const-1 lane 1
+cpu.imem: removing const-0 lane 2
+cpu.imem: removing const-0 lane 3
+cpu.imem: removing const-0 lane 6
+cpu.imem: removing const-0 lane 10
+cpu.imem: removing const-0 lane 12
+cpu.imem: removing const-0 lane 15
+cpu.imem: removing const-0 lane 17
+cpu.imem: removing const-0 lane 18
+cpu.imem: removing const-0 lane 19
+cpu.imem: removing const-0 lane 26
+cpu.imem: removing const-0 lane 27
+cpu.imem: removing const-0 lane 28
+cpu.imem: removing const-0 lane 29
+cpu.imem: removing const-0 lane 30
+cpu.imem: removing const-0 lane 31
+Performed a total of 1 transformations.
+
+7.23.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+7.23.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing cpu.u_dmem.mem write port 0.
+  Analyzing cpu.u_rf.regs write port 0.
+
+7.23.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+7.23.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\u_dmem.mem'[0] in module `\cpu': no output FF found.
+Checking read port `\u_rf.regs'[0] in module `\cpu': no output FF found.
+Checking read port `\u_rf.regs'[1] in module `\cpu': no output FF found.
+Checking read port `\u_rf.regs'[2] in module `\cpu': no output FF found.
+Checking read port `\imem'[0] in module `\cpu': no output FF found.
+Checking read port address `\u_dmem.mem'[0] in module `\cpu': no address FF found.
+Checking read port address `\u_rf.regs'[0] in module `\cpu': no address FF found.
+Checking read port address `\u_rf.regs'[1] in module `\cpu': no address FF found.
+Checking read port address `\u_rf.regs'[2] in module `\cpu': no address FF found.
+Checking read port address `\imem'[0] in module `\cpu': merged address FF to cell.
+
+7.23.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.23.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory cpu.u_rf.regs by address:
+
+7.23.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+7.23.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.23.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+7.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.25. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+using FF mapping for memory cpu.u_rf.regs
+using FF mapping for memory cpu.u_dmem.mem
+using FF mapping for memory cpu.imem
+<suppressed ~88 debug messages>
+
+7.26. Executing TECHMAP pass (map to technology primitives).
+
+7.26.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/brams_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/brams_map.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_RAM4K_'.
+Successfully finished Verilog frontend.
+
+7.26.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/spram_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/spram_map.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_SPRAM_'.
+Successfully finished Verilog frontend.
+
+7.26.3. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+7.27. Executing ICE40_BRAMINIT pass.
+
+7.28. Executing OPT pass (performing simple optimizations).
+
+7.28.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+<suppressed ~60 debug messages>
+
+7.28.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 84 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 83 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+7.28.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.28.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 13 unused cells and 53 unused wires.
+<suppressed ~16 debug messages>
+
+7.28.5. Finished fast OPT passes.
+
+7.29. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \u_rf.regs in module \cpu:
+  created 32 $dff cells and 0 static cells of width 32.
+  read interface: 0 $dff and 93 $mux cells.
+  write interface: 32 write mux blocks.
+Mapping memory \u_dmem.mem in module \cpu:
+  created 256 $dff cells and 0 static cells of width 32.
+  read interface: 0 $dff and 255 $mux cells.
+  write interface: 256 write mux blocks.
+Mapping memory \imem in module \cpu:
+  created 64 $dff cells and 0 static cells of width 15.
+Extracted data FF from read port 0 of cpu.imem: $\imem$rdreg[0]
+  read interface: 1 $dff and 63 $mux cells.
+  write interface: 0 write mux blocks.
+
+7.30. Executing OPT pass (performing simple optimizations).
+
+7.30.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+<suppressed ~192 debug messages>
+
+7.30.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 1542 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.30.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $memory\u_rf.regs$rdmux[2][3][7]$1951.
+    dead port 2/2 on $mux $memory\u_rf.regs$rdmux[2][3][7]$1951.
+    dead port 1/2 on $mux $memory\u_rf.regs$rdmux[2][3][6]$1948.
+    dead port 2/2 on $mux $memory\u_rf.regs$rdmux[2][3][6]$1948.
+    dead port 1/2 on $mux $memory\u_rf.regs$rdmux[2][3][5]$1945.
+    dead port 2/2 on $mux $memory\u_rf.regs$rdmux[2][3][5]$1945.
+    dead port 1/2 on $mux $memory\u_rf.regs$rdmux[2][3][4]$1942.
+    dead port 2/2 on $mux $memory\u_rf.regs$rdmux[2][3][4]$1942.
+    dead port 1/2 on $mux $memory\u_rf.regs$rdmux[2][3][3]$1939.
+    dead port 2/2 on $mux $memory\u_rf.regs$rdmux[2][3][3]$1939.
+    dead port 1/2 on $mux $memory\u_rf.regs$rdmux[2][3][2]$1936.
+    dead port 2/2 on $mux $memory\u_rf.regs$rdmux[2][3][2]$1936.
+    dead port 1/2 on $mux $memory\u_rf.regs$rdmux[2][3][1]$1933.
+    dead port 2/2 on $mux $memory\u_rf.regs$rdmux[2][3][1]$1933.
+    dead port 2/2 on $mux $memory\u_rf.regs$rdmux[2][3][0]$1930.
+    dead port 1/2 on $mux $flatten\u_dmem.$procmux$1340.
+    dead port 2/2 on $mux $flatten\u_dmem.$procmux$1340.
+    dead port 1/8 on $pmux $flatten\u_ctrl.$procmux$1445.
+    dead port 3/8 on $pmux $flatten\u_ctrl.$procmux$1445.
+    dead port 4/8 on $pmux $flatten\u_ctrl.$procmux$1445.
+    dead port 7/8 on $pmux $flatten\u_ctrl.$procmux$1445.
+    dead port 1/3 on $pmux $flatten\u_dmem.$procmux$1387.
+    dead port 1/5 on $pmux $flatten\u_dmem.$procmux$1391.
+    dead port 3/5 on $pmux $flatten\u_dmem.$procmux$1391.
+    dead port 1/2 on $mux $flatten\u_dmem.$procmux$1346.
+    dead port 2/2 on $mux $flatten\u_dmem.$procmux$1346.
+    dead port 1/2 on $mux $flatten\u_dmem.$ternary$dmem.v:29$427.
+    dead port 2/2 on $mux $flatten\u_dmem.$ternary$dmem.v:29$427.
+    dead port 1/6 on $pmux $flatten\u_dec.$procmux$1545.
+    dead port 2/6 on $pmux $flatten\u_dec.$procmux$1545.
+    dead port 3/6 on $pmux $flatten\u_dec.$procmux$1545.
+    dead port 1/4 on $pmux $flatten\u_ctrl.$procmux$1428.
+    dead port 2/4 on $pmux $flatten\u_ctrl.$procmux$1428.
+    dead port 3/4 on $pmux $flatten\u_ctrl.$procmux$1428.
+    dead port 4/4 on $pmux $flatten\u_ctrl.$procmux$1428.
+    dead port 1/4 on $pmux $flatten\u_ctrl.$procmux$1481.
+Removed 36 multiplexer ports.
+<suppressed ~346055 debug messages>
+
+7.30.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][5][1]$5283:
+      Old ports: A=15'000001101110010, B=15'010100110001100, Y=$memory\imem$rdmux[0][4][0]$b$5234
+      New ports: A=2'01, B=2'10, Y=$memory\imem$rdmux[0][4][0]$b$5234 [2:1]
+      New connections: { $memory\imem$rdmux[0][4][0]$b$5234 [14:3] $memory\imem$rdmux[0][4][0]$b$5234 [0] } = { 1'0 $memory\imem$rdmux[0][4][0]$b$5234 [2] 1'0 $memory\imem$rdmux[0][4][0]$b$5234 [2] 1'0 $memory\imem$rdmux[0][4][0]$b$5234 [1] 1'1 $memory\imem$rdmux[0][4][0]$b$5234 [2:1] $memory\imem$rdmux[0][4][0]$b$5234 [1] $memory\imem$rdmux[0][4][0]$b$5234 [1] $memory\imem$rdmux[0][4][0]$b$5234 [2] 1'0 }
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][5][0]$5280:
+      Old ports: A=15'101010000000101, B=15'000000000001001, Y=$memory\imem$rdmux[0][4][0]$a$5233
+      New ports: A=2'01, B=2'10, Y=$memory\imem$rdmux[0][4][0]$a$5233 [3:2]
+      New connections: { $memory\imem$rdmux[0][4][0]$a$5233 [14:4] $memory\imem$rdmux[0][4][0]$a$5233 [1:0] } = { $memory\imem$rdmux[0][4][0]$a$5233 [2] 1'0 $memory\imem$rdmux[0][4][0]$a$5233 [2] 1'0 $memory\imem$rdmux[0][4][0]$a$5233 [2] 8'00000001 }
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][4][1]$5235:
+      Old ports: A=15'000000000000001, B=15'x, Y=$memory\imem$rdmux[0][3][0]$b$5210
+      New ports: A=2'01, B=2'x, Y=$memory\imem$rdmux[0][3][0]$b$5210 [1:0]
+      New connections: $memory\imem$rdmux[0][3][0]$b$5210 [14:2] = { $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] }
+    Consolidated identical input bits for $pmux cell $flatten\u_ctrl.$procmux$1445:
+      Old ports: A=4'0000, B=12'001101001000, Y=$flatten\u_ctrl.$2\alu_op[3:0]
+      New ports: A=3'000, B=9'001010100, Y={ $flatten\u_ctrl.$2\alu_op[3:0] [3:2] $flatten\u_ctrl.$2\alu_op[3:0] [0] }
+      New connections: $flatten\u_ctrl.$2\alu_op[3:0] [1] = $flatten\u_ctrl.$2\alu_op[3:0] [0]
+    Consolidated identical input bits for $pmux cell $flatten\u_dec.$procmux$1545:
+      Old ports: A=0, B={ 26'00000000000000000000000000 \u_dec.inst [25:20] 26'00000000000000000000000000 \u_dec.inst [25] \u_dec.inst [11] 1'0 \u_dec.inst [9:7] }, Y=\imm
+      New ports: A=6'000000, B={ \u_dec.inst [25:20] \u_dec.inst [25] \u_dec.inst [11] 1'0 \u_dec.inst [9:7] }, Y=\imm [5:0]
+      New connections: \imm [31:6] = 26'00000000000000000000000000
+    New ctrl vector for $pmux cell $flatten\u_ctrl.$procmux$1481: $auto$opt_reduce.cc:137:opt_pmux$5377
+  Optimizing cells in module \cpu.
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][4][0]$5232:
+      Old ports: A=$memory\imem$rdmux[0][4][0]$a$5233, B=$memory\imem$rdmux[0][4][0]$b$5234, Y=$memory\imem$rdmux[0][3][0]$a$5209
+      New ports: A={ $memory\imem$rdmux[0][4][0]$a$5233 [2] 2'00 $memory\imem$rdmux[0][4][0]$a$5233 [3:2] 2'01 }, B={ 2'01 $memory\imem$rdmux[0][4][0]$b$5234 [2] $memory\imem$rdmux[0][4][0]$b$5234 [2] $memory\imem$rdmux[0][4][0]$b$5234 [2:1] 1'0 }, Y={ $memory\imem$rdmux[0][3][0]$a$5209 [10] $memory\imem$rdmux[0][3][0]$a$5209 [8:7] $memory\imem$rdmux[0][3][0]$a$5209 [3:0] }
+      New connections: { $memory\imem$rdmux[0][3][0]$a$5209 [14:11] $memory\imem$rdmux[0][3][0]$a$5209 [9] $memory\imem$rdmux[0][3][0]$a$5209 [6:4] } = { $memory\imem$rdmux[0][3][0]$a$5209 [10] $memory\imem$rdmux[0][3][0]$a$5209 [7] $memory\imem$rdmux[0][3][0]$a$5209 [10] $memory\imem$rdmux[0][3][0]$a$5209 [7] $memory\imem$rdmux[0][3][0]$a$5209 [1] $memory\imem$rdmux[0][3][0]$a$5209 [1] $memory\imem$rdmux[0][3][0]$a$5209 [1] $memory\imem$rdmux[0][3][0]$a$5209 [1] }
+    Consolidated identical input bits for $mux cell $flatten\u_ctrl.$procmux$1481:
+      Old ports: A=4'0000, B=$flatten\u_ctrl.$2\alu_op[3:0], Y=\u_alu.op
+      New ports: A=3'000, B={ $flatten\u_ctrl.$2\alu_op[3:0] [3:2] $flatten\u_ctrl.$2\alu_op[3:0] [0] }, Y={ \u_alu.op [3:2] \u_alu.op [0] }
+      New connections: \u_alu.op [1] = \u_alu.op [0]
+  Optimizing cells in module \cpu.
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][3][0]$5208:
+      Old ports: A=$memory\imem$rdmux[0][3][0]$a$5209, B=$memory\imem$rdmux[0][3][0]$b$5210, Y=$memory\imem$rdmux[0][2][0]$a$5197
+      New ports: A={ $memory\imem$rdmux[0][3][0]$a$5209 [10] $memory\imem$rdmux[0][3][0]$a$5209 [8:7] $memory\imem$rdmux[0][3][0]$a$5209 [3:0] }, B={ $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1] $memory\imem$rdmux[0][3][0]$b$5210 [1:0] }, Y={ $memory\imem$rdmux[0][2][0]$a$5197 [10] $memory\imem$rdmux[0][2][0]$a$5197 [8:7] $memory\imem$rdmux[0][2][0]$a$5197 [3:0] }
+      New connections: { $memory\imem$rdmux[0][2][0]$a$5197 [14:11] $memory\imem$rdmux[0][2][0]$a$5197 [9] $memory\imem$rdmux[0][2][0]$a$5197 [6:4] } = { $memory\imem$rdmux[0][2][0]$a$5197 [10] $memory\imem$rdmux[0][2][0]$a$5197 [7] $memory\imem$rdmux[0][2][0]$a$5197 [10] $memory\imem$rdmux[0][2][0]$a$5197 [7] $memory\imem$rdmux[0][2][0]$a$5197 [1] $memory\imem$rdmux[0][2][0]$a$5197 [1] $memory\imem$rdmux[0][2][0]$a$5197 [1] $memory\imem$rdmux[0][2][0]$a$5197 [1] }
+  Optimizing cells in module \cpu.
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][2][0]$5196:
+      Old ports: A=$memory\imem$rdmux[0][2][0]$a$5197, B=15'x, Y=$memory\imem$rdmux[0][1][0]$a$5191
+      New ports: A={ $memory\imem$rdmux[0][2][0]$a$5197 [10] $memory\imem$rdmux[0][2][0]$a$5197 [8:7] $memory\imem$rdmux[0][2][0]$a$5197 [3:0] }, B=7'x, Y={ $memory\imem$rdmux[0][1][0]$a$5191 [10] $memory\imem$rdmux[0][1][0]$a$5191 [8:7] $memory\imem$rdmux[0][1][0]$a$5191 [3:0] }
+      New connections: { $memory\imem$rdmux[0][1][0]$a$5191 [14:11] $memory\imem$rdmux[0][1][0]$a$5191 [9] $memory\imem$rdmux[0][1][0]$a$5191 [6:4] } = { $memory\imem$rdmux[0][1][0]$a$5191 [10] $memory\imem$rdmux[0][1][0]$a$5191 [7] $memory\imem$rdmux[0][1][0]$a$5191 [10] $memory\imem$rdmux[0][1][0]$a$5191 [7] $memory\imem$rdmux[0][1][0]$a$5191 [1] $memory\imem$rdmux[0][1][0]$a$5191 [1] $memory\imem$rdmux[0][1][0]$a$5191 [1] $memory\imem$rdmux[0][1][0]$a$5191 [1] }
+  Optimizing cells in module \cpu.
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][1][0]$5190:
+      Old ports: A=$memory\imem$rdmux[0][1][0]$a$5191, B=15'x, Y=$memory\imem$rdmux[0][0][0]$a$5188
+      New ports: A={ $memory\imem$rdmux[0][1][0]$a$5191 [10] $memory\imem$rdmux[0][1][0]$a$5191 [8:7] $memory\imem$rdmux[0][1][0]$a$5191 [3:0] }, B=7'x, Y={ $memory\imem$rdmux[0][0][0]$a$5188 [10] $memory\imem$rdmux[0][0][0]$a$5188 [8:7] $memory\imem$rdmux[0][0][0]$a$5188 [3:0] }
+      New connections: { $memory\imem$rdmux[0][0][0]$a$5188 [14:11] $memory\imem$rdmux[0][0][0]$a$5188 [9] $memory\imem$rdmux[0][0][0]$a$5188 [6:4] } = { $memory\imem$rdmux[0][0][0]$a$5188 [10] $memory\imem$rdmux[0][0][0]$a$5188 [7] $memory\imem$rdmux[0][0][0]$a$5188 [10] $memory\imem$rdmux[0][0][0]$a$5188 [7] $memory\imem$rdmux[0][0][0]$a$5188 [1] $memory\imem$rdmux[0][0][0]$a$5188 [1] $memory\imem$rdmux[0][0][0]$a$5188 [1] $memory\imem$rdmux[0][0][0]$a$5188 [1] }
+  Optimizing cells in module \cpu.
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][0][0]$5187:
+      Old ports: A=$memory\imem$rdmux[0][0][0]$a$5188, B=15'x, Y=$\imem$rdreg[0]$d
+      New ports: A={ $memory\imem$rdmux[0][0][0]$a$5188 [10] $memory\imem$rdmux[0][0][0]$a$5188 [8:7] $memory\imem$rdmux[0][0][0]$a$5188 [3:0] }, B=7'x, Y={ $\imem$rdreg[0]$d [10] $\imem$rdreg[0]$d [8:7] $\imem$rdreg[0]$d [3:0] }
+      New connections: { $\imem$rdreg[0]$d [14:11] $\imem$rdreg[0]$d [9] $\imem$rdreg[0]$d [6:4] } = { $\imem$rdreg[0]$d [10] $\imem$rdreg[0]$d [7] $\imem$rdreg[0]$d [10] $\imem$rdreg[0]$d [7] $\imem$rdreg[0]$d [1] $\imem$rdreg[0]$d [1] $\imem$rdreg[0]$d [1] $\imem$rdreg[0]$d [1] }
+  Optimizing cells in module \cpu.
+Performed a total of 12 changes.
+
+7.30.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 1531 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 1530 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+7.30.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $auto$ff.cc:337:slice$1597 ($sdff) from module cpu (D = \pc [1], Q = \pc [1]).
+Handling D = Q on $auto$ff.cc:337:slice$5378 ($sdffe) from module cpu (conecting SRST instead).
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$5378 ($dffe) from module cpu.
+
+7.30.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 1 unused cells and 895 unused wires.
+<suppressed ~3 debug messages>
+
+7.30.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+<suppressed ~9 debug messages>
+
+7.30.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.30.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $flatten\u_alu.$ternary$alu.v:30$166.
+    dead port 2/2 on $mux $flatten\u_alu.$ternary$alu.v:30$166.
+    dead port 1/11 on $pmux $flatten\u_alu.$procmux$1402.
+    dead port 4/11 on $pmux $flatten\u_alu.$procmux$1402.
+    dead port 5/11 on $pmux $flatten\u_alu.$procmux$1402.
+    dead port 8/11 on $pmux $flatten\u_alu.$procmux$1402.
+    dead port 9/11 on $pmux $flatten\u_alu.$procmux$1402.
+Removed 7 multiplexer ports.
+<suppressed ~345540 debug messages>
+
+7.30.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+    Consolidated identical input bits for $mux cell $memory\imem$rdmux[0][4][0]$5232:
+      Old ports: A={ $memory\imem$rdmux[0][4][0]$a$5233 [2] 2'00 $memory\imem$rdmux[0][4][0]$a$5233 [3:2] 2'01 }, B={ 2'01 $memory\imem$rdmux[0][4][0]$a$5233 [3] $memory\imem$rdmux[0][4][0]$a$5233 [3] $memory\imem$rdmux[0][4][0]$a$5233 [3:2] 1'0 }, Y={ $memory\imem$rdmux[0][3][0]$a$5209 [10] $memory\imem$rdmux[0][3][0]$a$5209 [8:7] $memory\imem$rdmux[0][3][0]$a$5209 [3:0] }
+      New ports: A={ $memory\imem$rdmux[0][4][0]$a$5233 [2] 2'00 $memory\imem$rdmux[0][4][0]$a$5233 [2] 2'01 }, B={ 2'01 $memory\imem$rdmux[0][4][0]$a$5233 [3] $memory\imem$rdmux[0][4][0]$a$5233 [3:2] 1'0 }, Y={ $memory\imem$rdmux[0][3][0]$a$5209 [10] $memory\imem$rdmux[0][3][0]$a$5209 [8:7] $memory\imem$rdmux[0][3][0]$a$5209 [2:0] }
+      New connections: $memory\imem$rdmux[0][3][0]$a$5209 [3] = $memory\imem$rdmux[0][4][0]$a$5233 [3]
+  Optimizing cells in module \cpu.
+Performed a total of 1 changes.
+
+7.30.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 1524 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.30.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\u_rf.regs[0]$1659 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[0]).
+Adding EN signal on $memory\u_rf.regs[1]$1661 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[1]).
+Adding EN signal on $memory\u_rf.regs[2]$1663 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[2]).
+Adding EN signal on $memory\u_rf.regs[3]$1665 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[3]).
+Adding EN signal on $memory\u_rf.regs[4]$1667 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[4]).
+Adding EN signal on $memory\u_rf.regs[5]$1669 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[5]).
+Adding EN signal on $memory\u_rf.regs[6]$1671 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[6]).
+Adding EN signal on $memory\u_rf.regs[7]$1673 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[7]).
+Handling D = Q on $memory\u_rf.regs[8]$1675 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[9]$1677 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[10]$1679 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[11]$1681 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[12]$1683 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[13]$1685 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[14]$1687 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[15]$1689 ($dff) from module cpu (removing D path).
+Adding EN signal on $memory\u_rf.regs[16]$1691 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[16]).
+Adding EN signal on $memory\u_rf.regs[17]$1693 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[17]).
+Adding EN signal on $memory\u_rf.regs[18]$1695 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[18]).
+Adding EN signal on $memory\u_rf.regs[19]$1697 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[19]).
+Adding EN signal on $memory\u_rf.regs[20]$1699 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[20]).
+Adding EN signal on $memory\u_rf.regs[21]$1701 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[21]).
+Adding EN signal on $memory\u_rf.regs[22]$1703 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[22]).
+Adding EN signal on $memory\u_rf.regs[23]$1705 ($dff) from module cpu (D = \u_rf.rd_data, Q = \u_rf.regs[23]).
+Handling D = Q on $memory\u_rf.regs[24]$1707 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[25]$1709 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[26]$1711 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[27]$1713 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[28]$1715 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[29]$1717 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[30]$1719 ($dff) from module cpu (removing D path).
+Handling D = Q on $memory\u_rf.regs[31]$1721 ($dff) from module cpu (removing D path).
+Adding EN signal on $memory\u_dmem.mem[0]$2246 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[0]).
+Adding EN signal on $memory\u_dmem.mem[1]$2248 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[1]).
+Adding EN signal on $memory\u_dmem.mem[2]$2250 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[2]).
+Adding EN signal on $memory\u_dmem.mem[3]$2252 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[3]).
+Adding EN signal on $memory\u_dmem.mem[4]$2254 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[4]).
+Adding EN signal on $memory\u_dmem.mem[5]$2256 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[5]).
+Adding EN signal on $memory\u_dmem.mem[6]$2258 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[6]).
+Adding EN signal on $memory\u_dmem.mem[7]$2260 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[7]).
+Adding EN signal on $memory\u_dmem.mem[8]$2262 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[8]).
+Adding EN signal on $memory\u_dmem.mem[9]$2264 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[9]).
+Adding EN signal on $memory\u_dmem.mem[10]$2266 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[10]).
+Adding EN signal on $memory\u_dmem.mem[11]$2268 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[11]).
+Adding EN signal on $memory\u_dmem.mem[12]$2270 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[12]).
+Adding EN signal on $memory\u_dmem.mem[13]$2272 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[13]).
+Adding EN signal on $memory\u_dmem.mem[14]$2274 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[14]).
+Adding EN signal on $memory\u_dmem.mem[15]$2276 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[15]).
+Adding EN signal on $memory\u_dmem.mem[16]$2278 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[16]).
+Adding EN signal on $memory\u_dmem.mem[17]$2280 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[17]).
+Adding EN signal on $memory\u_dmem.mem[18]$2282 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[18]).
+Adding EN signal on $memory\u_dmem.mem[19]$2284 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[19]).
+Adding EN signal on $memory\u_dmem.mem[20]$2286 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[20]).
+Adding EN signal on $memory\u_dmem.mem[21]$2288 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[21]).
+Adding EN signal on $memory\u_dmem.mem[22]$2290 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[22]).
+Adding EN signal on $memory\u_dmem.mem[23]$2292 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[23]).
+Adding EN signal on $memory\u_dmem.mem[24]$2294 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[24]).
+Adding EN signal on $memory\u_dmem.mem[25]$2296 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[25]).
+Adding EN signal on $memory\u_dmem.mem[26]$2298 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[26]).
+Adding EN signal on $memory\u_dmem.mem[27]$2300 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[27]).
+Adding EN signal on $memory\u_dmem.mem[28]$2302 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[28]).
+Adding EN signal on $memory\u_dmem.mem[29]$2304 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[29]).
+Adding EN signal on $memory\u_dmem.mem[30]$2306 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[30]).
+Adding EN signal on $memory\u_dmem.mem[31]$2308 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[31]).
+Adding EN signal on $memory\u_dmem.mem[32]$2310 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[32]).
+Adding EN signal on $memory\u_dmem.mem[33]$2312 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[33]).
+Adding EN signal on $memory\u_dmem.mem[34]$2314 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[34]).
+Adding EN signal on $memory\u_dmem.mem[35]$2316 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[35]).
+Adding EN signal on $memory\u_dmem.mem[36]$2318 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[36]).
+Adding EN signal on $memory\u_dmem.mem[37]$2320 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[37]).
+Adding EN signal on $memory\u_dmem.mem[38]$2322 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[38]).
+Adding EN signal on $memory\u_dmem.mem[39]$2324 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[39]).
+Adding EN signal on $memory\u_dmem.mem[40]$2326 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[40]).
+Adding EN signal on $memory\u_dmem.mem[41]$2328 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[41]).
+Adding EN signal on $memory\u_dmem.mem[42]$2330 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[42]).
+Adding EN signal on $memory\u_dmem.mem[43]$2332 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[43]).
+Adding EN signal on $memory\u_dmem.mem[44]$2334 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[44]).
+Adding EN signal on $memory\u_dmem.mem[45]$2336 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[45]).
+Adding EN signal on $memory\u_dmem.mem[46]$2338 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[46]).
+Adding EN signal on $memory\u_dmem.mem[47]$2340 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[47]).
+Adding EN signal on $memory\u_dmem.mem[48]$2342 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[48]).
+Adding EN signal on $memory\u_dmem.mem[49]$2344 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[49]).
+Adding EN signal on $memory\u_dmem.mem[50]$2346 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[50]).
+Adding EN signal on $memory\u_dmem.mem[51]$2348 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[51]).
+Adding EN signal on $memory\u_dmem.mem[52]$2350 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[52]).
+Adding EN signal on $memory\u_dmem.mem[53]$2352 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[53]).
+Adding EN signal on $memory\u_dmem.mem[54]$2354 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[54]).
+Adding EN signal on $memory\u_dmem.mem[55]$2356 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[55]).
+Adding EN signal on $memory\u_dmem.mem[56]$2358 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[56]).
+Adding EN signal on $memory\u_dmem.mem[57]$2360 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[57]).
+Adding EN signal on $memory\u_dmem.mem[58]$2362 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[58]).
+Adding EN signal on $memory\u_dmem.mem[59]$2364 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[59]).
+Adding EN signal on $memory\u_dmem.mem[60]$2366 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[60]).
+Adding EN signal on $memory\u_dmem.mem[61]$2368 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[61]).
+Adding EN signal on $memory\u_dmem.mem[62]$2370 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[62]).
+Adding EN signal on $memory\u_dmem.mem[63]$2372 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[63]).
+Adding EN signal on $memory\u_dmem.mem[64]$2374 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[64]).
+Adding EN signal on $memory\u_dmem.mem[65]$2376 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[65]).
+Adding EN signal on $memory\u_dmem.mem[66]$2378 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[66]).
+Adding EN signal on $memory\u_dmem.mem[67]$2380 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[67]).
+Adding EN signal on $memory\u_dmem.mem[68]$2382 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[68]).
+Adding EN signal on $memory\u_dmem.mem[69]$2384 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[69]).
+Adding EN signal on $memory\u_dmem.mem[70]$2386 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[70]).
+Adding EN signal on $memory\u_dmem.mem[71]$2388 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[71]).
+Adding EN signal on $memory\u_dmem.mem[72]$2390 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[72]).
+Adding EN signal on $memory\u_dmem.mem[73]$2392 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[73]).
+Adding EN signal on $memory\u_dmem.mem[74]$2394 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[74]).
+Adding EN signal on $memory\u_dmem.mem[75]$2396 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[75]).
+Adding EN signal on $memory\u_dmem.mem[76]$2398 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[76]).
+Adding EN signal on $memory\u_dmem.mem[77]$2400 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[77]).
+Adding EN signal on $memory\u_dmem.mem[78]$2402 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[78]).
+Adding EN signal on $memory\u_dmem.mem[79]$2404 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[79]).
+Adding EN signal on $memory\u_dmem.mem[80]$2406 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[80]).
+Adding EN signal on $memory\u_dmem.mem[81]$2408 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[81]).
+Adding EN signal on $memory\u_dmem.mem[82]$2410 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[82]).
+Adding EN signal on $memory\u_dmem.mem[83]$2412 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[83]).
+Adding EN signal on $memory\u_dmem.mem[84]$2414 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[84]).
+Adding EN signal on $memory\u_dmem.mem[85]$2416 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[85]).
+Adding EN signal on $memory\u_dmem.mem[86]$2418 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[86]).
+Adding EN signal on $memory\u_dmem.mem[87]$2420 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[87]).
+Adding EN signal on $memory\u_dmem.mem[88]$2422 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[88]).
+Adding EN signal on $memory\u_dmem.mem[89]$2424 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[89]).
+Adding EN signal on $memory\u_dmem.mem[90]$2426 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[90]).
+Adding EN signal on $memory\u_dmem.mem[91]$2428 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[91]).
+Adding EN signal on $memory\u_dmem.mem[92]$2430 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[92]).
+Adding EN signal on $memory\u_dmem.mem[93]$2432 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[93]).
+Adding EN signal on $memory\u_dmem.mem[94]$2434 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[94]).
+Adding EN signal on $memory\u_dmem.mem[95]$2436 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[95]).
+Adding EN signal on $memory\u_dmem.mem[96]$2438 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[96]).
+Adding EN signal on $memory\u_dmem.mem[97]$2440 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[97]).
+Adding EN signal on $memory\u_dmem.mem[98]$2442 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[98]).
+Adding EN signal on $memory\u_dmem.mem[99]$2444 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[99]).
+Adding EN signal on $memory\u_dmem.mem[100]$2446 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[100]).
+Adding EN signal on $memory\u_dmem.mem[101]$2448 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[101]).
+Adding EN signal on $memory\u_dmem.mem[102]$2450 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[102]).
+Adding EN signal on $memory\u_dmem.mem[103]$2452 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[103]).
+Adding EN signal on $memory\u_dmem.mem[104]$2454 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[104]).
+Adding EN signal on $memory\u_dmem.mem[105]$2456 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[105]).
+Adding EN signal on $memory\u_dmem.mem[106]$2458 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[106]).
+Adding EN signal on $memory\u_dmem.mem[107]$2460 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[107]).
+Adding EN signal on $memory\u_dmem.mem[108]$2462 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[108]).
+Adding EN signal on $memory\u_dmem.mem[109]$2464 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[109]).
+Adding EN signal on $memory\u_dmem.mem[110]$2466 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[110]).
+Adding EN signal on $memory\u_dmem.mem[111]$2468 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[111]).
+Adding EN signal on $memory\u_dmem.mem[112]$2470 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[112]).
+Adding EN signal on $memory\u_dmem.mem[113]$2472 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[113]).
+Adding EN signal on $memory\u_dmem.mem[114]$2474 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[114]).
+Adding EN signal on $memory\u_dmem.mem[115]$2476 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[115]).
+Adding EN signal on $memory\u_dmem.mem[116]$2478 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[116]).
+Adding EN signal on $memory\u_dmem.mem[117]$2480 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[117]).
+Adding EN signal on $memory\u_dmem.mem[118]$2482 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[118]).
+Adding EN signal on $memory\u_dmem.mem[119]$2484 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[119]).
+Adding EN signal on $memory\u_dmem.mem[120]$2486 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[120]).
+Adding EN signal on $memory\u_dmem.mem[121]$2488 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[121]).
+Adding EN signal on $memory\u_dmem.mem[122]$2490 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[122]).
+Adding EN signal on $memory\u_dmem.mem[123]$2492 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[123]).
+Adding EN signal on $memory\u_dmem.mem[124]$2494 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[124]).
+Adding EN signal on $memory\u_dmem.mem[125]$2496 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[125]).
+Adding EN signal on $memory\u_dmem.mem[126]$2498 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[126]).
+Adding EN signal on $memory\u_dmem.mem[127]$2500 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[127]).
+Adding EN signal on $memory\u_dmem.mem[128]$2502 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[128]).
+Adding EN signal on $memory\u_dmem.mem[129]$2504 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[129]).
+Adding EN signal on $memory\u_dmem.mem[130]$2506 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[130]).
+Adding EN signal on $memory\u_dmem.mem[131]$2508 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[131]).
+Adding EN signal on $memory\u_dmem.mem[132]$2510 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[132]).
+Adding EN signal on $memory\u_dmem.mem[133]$2512 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[133]).
+Adding EN signal on $memory\u_dmem.mem[134]$2514 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[134]).
+Adding EN signal on $memory\u_dmem.mem[135]$2516 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[135]).
+Adding EN signal on $memory\u_dmem.mem[136]$2518 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[136]).
+Adding EN signal on $memory\u_dmem.mem[137]$2520 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[137]).
+Adding EN signal on $memory\u_dmem.mem[138]$2522 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[138]).
+Adding EN signal on $memory\u_dmem.mem[139]$2524 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[139]).
+Adding EN signal on $memory\u_dmem.mem[140]$2526 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[140]).
+Adding EN signal on $memory\u_dmem.mem[141]$2528 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[141]).
+Adding EN signal on $memory\u_dmem.mem[142]$2530 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[142]).
+Adding EN signal on $memory\u_dmem.mem[143]$2532 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[143]).
+Adding EN signal on $memory\u_dmem.mem[144]$2534 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[144]).
+Adding EN signal on $memory\u_dmem.mem[145]$2536 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[145]).
+Adding EN signal on $memory\u_dmem.mem[146]$2538 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[146]).
+Adding EN signal on $memory\u_dmem.mem[147]$2540 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[147]).
+Adding EN signal on $memory\u_dmem.mem[148]$2542 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[148]).
+Adding EN signal on $memory\u_dmem.mem[149]$2544 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[149]).
+Adding EN signal on $memory\u_dmem.mem[150]$2546 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[150]).
+Adding EN signal on $memory\u_dmem.mem[151]$2548 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[151]).
+Adding EN signal on $memory\u_dmem.mem[152]$2550 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[152]).
+Adding EN signal on $memory\u_dmem.mem[153]$2552 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[153]).
+Adding EN signal on $memory\u_dmem.mem[154]$2554 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[154]).
+Adding EN signal on $memory\u_dmem.mem[155]$2556 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[155]).
+Adding EN signal on $memory\u_dmem.mem[156]$2558 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[156]).
+Adding EN signal on $memory\u_dmem.mem[157]$2560 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[157]).
+Adding EN signal on $memory\u_dmem.mem[158]$2562 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[158]).
+Adding EN signal on $memory\u_dmem.mem[159]$2564 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[159]).
+Adding EN signal on $memory\u_dmem.mem[160]$2566 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[160]).
+Adding EN signal on $memory\u_dmem.mem[161]$2568 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[161]).
+Adding EN signal on $memory\u_dmem.mem[162]$2570 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[162]).
+Adding EN signal on $memory\u_dmem.mem[163]$2572 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[163]).
+Adding EN signal on $memory\u_dmem.mem[164]$2574 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[164]).
+Adding EN signal on $memory\u_dmem.mem[165]$2576 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[165]).
+Adding EN signal on $memory\u_dmem.mem[166]$2578 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[166]).
+Adding EN signal on $memory\u_dmem.mem[167]$2580 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[167]).
+Adding EN signal on $memory\u_dmem.mem[168]$2582 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[168]).
+Adding EN signal on $memory\u_dmem.mem[169]$2584 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[169]).
+Adding EN signal on $memory\u_dmem.mem[170]$2586 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[170]).
+Adding EN signal on $memory\u_dmem.mem[171]$2588 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[171]).
+Adding EN signal on $memory\u_dmem.mem[172]$2590 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[172]).
+Adding EN signal on $memory\u_dmem.mem[173]$2592 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[173]).
+Adding EN signal on $memory\u_dmem.mem[174]$2594 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[174]).
+Adding EN signal on $memory\u_dmem.mem[175]$2596 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[175]).
+Adding EN signal on $memory\u_dmem.mem[176]$2598 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[176]).
+Adding EN signal on $memory\u_dmem.mem[177]$2600 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[177]).
+Adding EN signal on $memory\u_dmem.mem[178]$2602 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[178]).
+Adding EN signal on $memory\u_dmem.mem[179]$2604 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[179]).
+Adding EN signal on $memory\u_dmem.mem[180]$2606 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[180]).
+Adding EN signal on $memory\u_dmem.mem[181]$2608 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[181]).
+Adding EN signal on $memory\u_dmem.mem[182]$2610 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[182]).
+Adding EN signal on $memory\u_dmem.mem[183]$2612 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[183]).
+Adding EN signal on $memory\u_dmem.mem[184]$2614 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[184]).
+Adding EN signal on $memory\u_dmem.mem[185]$2616 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[185]).
+Adding EN signal on $memory\u_dmem.mem[186]$2618 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[186]).
+Adding EN signal on $memory\u_dmem.mem[187]$2620 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[187]).
+Adding EN signal on $memory\u_dmem.mem[188]$2622 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[188]).
+Adding EN signal on $memory\u_dmem.mem[189]$2624 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[189]).
+Adding EN signal on $memory\u_dmem.mem[190]$2626 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[190]).
+Adding EN signal on $memory\u_dmem.mem[191]$2628 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[191]).
+Adding EN signal on $memory\u_dmem.mem[192]$2630 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[192]).
+Adding EN signal on $memory\u_dmem.mem[193]$2632 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[193]).
+Adding EN signal on $memory\u_dmem.mem[194]$2634 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[194]).
+Adding EN signal on $memory\u_dmem.mem[195]$2636 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[195]).
+Adding EN signal on $memory\u_dmem.mem[196]$2638 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[196]).
+Adding EN signal on $memory\u_dmem.mem[197]$2640 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[197]).
+Adding EN signal on $memory\u_dmem.mem[198]$2642 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[198]).
+Adding EN signal on $memory\u_dmem.mem[199]$2644 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[199]).
+Adding EN signal on $memory\u_dmem.mem[200]$2646 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[200]).
+Adding EN signal on $memory\u_dmem.mem[201]$2648 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[201]).
+Adding EN signal on $memory\u_dmem.mem[202]$2650 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[202]).
+Adding EN signal on $memory\u_dmem.mem[203]$2652 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[203]).
+Adding EN signal on $memory\u_dmem.mem[204]$2654 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[204]).
+Adding EN signal on $memory\u_dmem.mem[205]$2656 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[205]).
+Adding EN signal on $memory\u_dmem.mem[206]$2658 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[206]).
+Adding EN signal on $memory\u_dmem.mem[207]$2660 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[207]).
+Adding EN signal on $memory\u_dmem.mem[208]$2662 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[208]).
+Adding EN signal on $memory\u_dmem.mem[209]$2664 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[209]).
+Adding EN signal on $memory\u_dmem.mem[210]$2666 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[210]).
+Adding EN signal on $memory\u_dmem.mem[211]$2668 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[211]).
+Adding EN signal on $memory\u_dmem.mem[212]$2670 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[212]).
+Adding EN signal on $memory\u_dmem.mem[213]$2672 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[213]).
+Adding EN signal on $memory\u_dmem.mem[214]$2674 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[214]).
+Adding EN signal on $memory\u_dmem.mem[215]$2676 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[215]).
+Adding EN signal on $memory\u_dmem.mem[216]$2678 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[216]).
+Adding EN signal on $memory\u_dmem.mem[217]$2680 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[217]).
+Adding EN signal on $memory\u_dmem.mem[218]$2682 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[218]).
+Adding EN signal on $memory\u_dmem.mem[219]$2684 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[219]).
+Adding EN signal on $memory\u_dmem.mem[220]$2686 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[220]).
+Adding EN signal on $memory\u_dmem.mem[221]$2688 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[221]).
+Adding EN signal on $memory\u_dmem.mem[222]$2690 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[222]).
+Adding EN signal on $memory\u_dmem.mem[223]$2692 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[223]).
+Adding EN signal on $memory\u_dmem.mem[224]$2694 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[224]).
+Adding EN signal on $memory\u_dmem.mem[225]$2696 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[225]).
+Adding EN signal on $memory\u_dmem.mem[226]$2698 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[226]).
+Adding EN signal on $memory\u_dmem.mem[227]$2700 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[227]).
+Adding EN signal on $memory\u_dmem.mem[228]$2702 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[228]).
+Adding EN signal on $memory\u_dmem.mem[229]$2704 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[229]).
+Adding EN signal on $memory\u_dmem.mem[230]$2706 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[230]).
+Adding EN signal on $memory\u_dmem.mem[231]$2708 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[231]).
+Adding EN signal on $memory\u_dmem.mem[232]$2710 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[232]).
+Adding EN signal on $memory\u_dmem.mem[233]$2712 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[233]).
+Adding EN signal on $memory\u_dmem.mem[234]$2714 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[234]).
+Adding EN signal on $memory\u_dmem.mem[235]$2716 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[235]).
+Adding EN signal on $memory\u_dmem.mem[236]$2718 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[236]).
+Adding EN signal on $memory\u_dmem.mem[237]$2720 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[237]).
+Adding EN signal on $memory\u_dmem.mem[238]$2722 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[238]).
+Adding EN signal on $memory\u_dmem.mem[239]$2724 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[239]).
+Adding EN signal on $memory\u_dmem.mem[240]$2726 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[240]).
+Adding EN signal on $memory\u_dmem.mem[241]$2728 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[241]).
+Adding EN signal on $memory\u_dmem.mem[242]$2730 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[242]).
+Adding EN signal on $memory\u_dmem.mem[243]$2732 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[243]).
+Adding EN signal on $memory\u_dmem.mem[244]$2734 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[244]).
+Adding EN signal on $memory\u_dmem.mem[245]$2736 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[245]).
+Adding EN signal on $memory\u_dmem.mem[246]$2738 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[246]).
+Adding EN signal on $memory\u_dmem.mem[247]$2740 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[247]).
+Adding EN signal on $memory\u_dmem.mem[248]$2742 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[248]).
+Adding EN signal on $memory\u_dmem.mem[249]$2744 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[249]).
+Adding EN signal on $memory\u_dmem.mem[250]$2746 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[250]).
+Adding EN signal on $memory\u_dmem.mem[251]$2748 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[251]).
+Adding EN signal on $memory\u_dmem.mem[252]$2750 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[252]).
+Adding EN signal on $memory\u_dmem.mem[253]$2752 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[253]).
+Adding EN signal on $memory\u_dmem.mem[254]$2754 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[254]).
+Adding EN signal on $memory\u_dmem.mem[255]$2756 ($dff) from module cpu (D = \u_dmem.merged, Q = \u_dmem.mem[255]).
+
+7.30.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 275 unused cells and 281 unused wires.
+<suppressed ~276 debug messages>
+
+7.30.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+<suppressed ~14 debug messages>
+
+7.30.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.30.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4753 debug messages>
+
+7.30.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+Performed a total of 0 changes.
+
+7.30.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 1219 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.30.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.30.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 0 unused cells and 14 unused wires.
+<suppressed ~1 debug messages>
+
+7.30.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.30.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.30.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cpu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4753 debug messages>
+
+7.30.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cpu.
+Performed a total of 0 changes.
+
+7.30.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 1219 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.30.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.30.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.30.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.30.30. Finished fast OPT passes. (There is nothing left to do.)
+
+7.31. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+7.32. Executing TECHMAP pass (map to technology primitives).
+
+7.32.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+7.32.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/arith_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ice40_alu'.
+Successfully finished Verilog frontend.
+
+7.32.3. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$44a13d10af618e7fbe7b9aad2f6151ffcee1e2fa\_80_ice40_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using template $paramod$constmap:6111415c3ecfd9bb520e2072bfee38e7d8bfb139$paramod$e765c459d3029c22a22a27989e94858fd9ebfa9c\_90_shift_ops_shr_shl_sshl_sshr for cells of type $sshr.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $pos.
+No more expansions possible.
+<suppressed ~1809 debug messages>
+
+7.33. Executing OPT pass (performing simple optimizations).
+
+7.33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+<suppressed ~404 debug messages>
+
+7.33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 19275 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 19170 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 19163 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 19161 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 19156 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 19152 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 19024 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 18960 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 18928 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+<suppressed ~1041 debug messages>
+Removed a total of 347 cells.
+
+7.33.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 63 unused cells and 265 unused wires.
+<suppressed ~64 debug messages>
+
+7.33.5. Finished fast OPT passes.
+
+7.34. Executing ICE40_OPT pass (performing simple optimizations).
+
+7.34.1. Running ICE40 specific optimizations.
+Optimized $__ICE40_CARRY_WRAPPER cell back to logic (without SB_CARRY) cpu.$auto$alumacc.cc:548:replace_alu$1606.slice[0].carry: CO=\pc [2]
+
+7.34.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+<suppressed ~35 debug messages>
+
+7.34.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 18830 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 18734 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Computing hashes of 18702 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+<suppressed ~384 debug messages>
+Removed a total of 128 cells.
+
+7.34.4. Executing OPT_DFF pass (perform DFF optimizations).
+Handling never-active EN on $auto$ff.cc:337:slice$14079 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14272 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14273 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14274 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14275 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14276 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14277 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14278 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14279 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14280 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14281 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14282 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14283 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14284 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14285 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14286 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14287 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14288 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14289 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14290 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14291 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14292 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14293 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14294 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14295 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14296 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14297 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14298 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14299 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14300 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14301 ($_DFFE_PP_) from module cpu (removing D path).
+Handling never-active EN on $auto$ff.cc:337:slice$14302 ($_DFFE_PP_) from module cpu (removing D path).
+
+7.34.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+Removed 18665 unused cells and 1528 unused wires.
+<suppressed ~18960 debug messages>
+
+7.34.6. Rerunning OPT passes. (Removed registers in this run.)
+
+7.34.7. Running ICE40 specific optimizations.
+
+7.34.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+<suppressed ~11 debug messages>
+
+7.34.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 5 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.34.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.34.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.34.12. Rerunning OPT passes. (Removed registers in this run.)
+
+7.34.13. Running ICE40 specific optimizations.
+
+7.34.14. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.34.15. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 5 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.34.16. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.34.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.34.18. Finished OPT passes. (There is nothing left to do.)
+
+7.35. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+
+7.36. Executing TECHMAP pass (map to technology primitives).
+
+7.36.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+7.36.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~22 debug messages>
+
+7.37. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.38. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+7.39. Executing ICE40_OPT pass (performing simple optimizations).
+
+7.39.1. Running ICE40 specific optimizations.
+
+7.39.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cpu.
+
+7.39.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cpu'.
+Computing hashes of 5 cells of `\cpu'.
+Finding duplicate cells in `\cpu'.
+Removed a total of 0 cells.
+
+7.39.4. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.39.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cpu..
+
+7.39.6. Finished OPT passes. (There is nothing left to do.)
+
+7.40. Executing CHECK pass (checking for obvious problems).
+Checking module cpu...
+Found and reported 0 problems.
+
+7.41. Executing TECHMAP pass (map to technology primitives).
+
+7.41.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/latches_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/latches_map.v' to AST representation.
+Generating RTLIL representation for module `$_DLATCH_N_'.
+Generating RTLIL representation for module `$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+7.41.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+7.42. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/abc9_model.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/abc9_model.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_CARRY_WRAPPER'.
+Successfully finished Verilog frontend.
+
+7.43. Executing ABC9 pass.
+
+7.43.1. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.2. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.3. Executing SCC pass (detecting logic loops).
+Found 0 SCCs in module cpu.
+Found 0 SCCs.
+
+7.43.4. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.5. Executing TECHMAP pass (map to technology primitives).
+
+7.43.5.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+7.43.5.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~129 debug messages>
+
+7.43.6. Executing OPT pass (performing simple optimizations).
+
+7.43.6.1. Executing OPT_EXPR pass (perform const folding).
+
+7.43.6.2. Executing OPT_MERGE pass (detect identical cells).
+Removed a total of 0 cells.
+
+7.43.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Removed 0 multiplexer ports.
+
+7.43.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+Performed a total of 0 changes.
+
+7.43.6.5. Executing OPT_MERGE pass (detect identical cells).
+Removed a total of 0 cells.
+
+7.43.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.43.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+
+7.43.6.8. Executing OPT_EXPR pass (perform const folding).
+
+7.43.6.9. Finished fast OPT passes. (There is nothing left to do.)
+
+7.43.7. Executing TECHMAP pass (map to technology primitives).
+
+7.43.7.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/abc9_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/abc9_map.v' to AST representation.
+Successfully finished Verilog frontend.
+
+7.43.7.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~2 debug messages>
+
+7.43.8. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/abc9_model.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/abc9_model.v' to AST representation.
+Generating RTLIL representation for module `$__ABC9_DELAY'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
+Generating RTLIL representation for module `$__DFF_N__$abc9_flop'.
+Generating RTLIL representation for module `$__DFF_P__$abc9_flop'.
+Successfully finished Verilog frontend.
+
+7.43.9. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.10. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.11. Executing ABC9_OPS pass (helper functions for ABC9).
+<suppressed ~2 debug messages>
+
+7.43.12. Executing AIGMAP pass (map logic to AIG).
+Module cpu: replaced 0 cells with 0 new cells, skipped 5 cells.
+  not replaced 1 cell types:
+       5 $scopeinfo
+
+7.43.12.1. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.12.2. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.12.3. Executing XAIGER backend.
+<suppressed ~5 debug messages>
+Extracted 0 AND gates and 36 wires from module `cpu' to a netlist network with 2 inputs and 32 outputs.
+
+7.43.12.4. Executing ABC9_EXE pass (technology mapping using ABC9).
+
+7.43.12.5. Executing ABC9.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_lut <abc-temp-dir>/input.lut 
+ABC: + read_box <abc-temp-dir>/input.box 
+ABC: + &read <abc-temp-dir>/input.xaig 
+ABC: + &ps 
+ABC: <abc-temp-dir>/input : i/o =      2/     32  and =       0  lev =    0 (0.00)  mem = 0.00 MB  box = 0  bb = 0
+ABC: + &scorr 
+ABC: Warning: The network is combinational.
+ABC: + &sweep 
+ABC: + &dc2 
+ABC: + &dch -f -r 
+ABC: + &ps 
+ABC: <abc-temp-dir>/input : i/o =      2/     32  and =       0  lev =    0 (0.00)  mem = 0.00 MB  ch =    0  box = 0  bb = 0
+ABC: cst =       0  cls =      0  lit =       0  unused =       2  proof =     0
+ABC: + &if -W 250 -v 
+ABC: K = 4. Memory (bytes): Truth =    0. Cut =   64. Obj =  144. Set =  672. CutMin = no
+ABC: Node =       0.  Ch =     0.  Total mem =    0.01 MB. Peak cut mem =    0.00 MB.
+ABC: P:  Del = -100000000.00.  Ar =       0.0.  Edge =        0.  Cut =        0.  T =     0.00 sec
+ABC: P:  Del = -100000000.00.  Ar =       0.0.  Edge =        0.  Cut =        0.  T =     0.00 sec
+ABC: P:  Del = -100000000.00.  Ar =       0.0.  Edge =        0.  Cut =        0.  T =     0.00 sec
+ABC: F:  Del = -100000000.00.  Ar =       0.0.  Edge =        0.  Cut =        0.  T =     0.00 sec
+ABC: A:  Del = -100000000.00.  Ar =       0.0.  Edge =        0.  Cut =        0.  T =     0.00 sec
+ABC: A:  Del = -100000000.00.  Ar =       0.0.  Edge =        0.  Cut =        0.  T =     0.00 sec
+ABC: Total time =     0.00 sec
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &mfs 
+ABC: Timing manager is given but there is no GIA of boxes.
+ABC: Error: Abc_FrameUpdateGia(): Transformation has failed.
+ABC: + &ps -l 
+ABC: <abc-temp-dir>/input : i/o =      2/     32  and =       0  lev =    0 (0.00)  mem = 0.00 MB  box = 0  bb = 0
+ABC: Mapping (K=0)  :  lut =      0  edge =       0  lev =    0 (0.00)  mem = 0.00 MB
+ABC: LUT = 0 : Ave = 0.00
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &verify 
+ABC: Networks are equivalent.  Time =     0.00 sec
+ABC: + time 
+ABC: elapse: 0.03 seconds, total: 0.03 seconds
+
+7.43.12.6. Executing AIGER frontend.
+<suppressed ~8 debug messages>
+Removed 0 unused cells and 3 unused wires.
+
+7.43.12.7. Executing ABC_OPS_REINTEGRATE pass (reintegrate ABC mapped design into module).
+ABC RESULTS:           input signals:        2
+ABC RESULTS:          output signals:        1
+<suppressed ~68 debug messages>
+Removing temp directory.
+
+7.43.13. Executing TECHMAP pass (map to technology primitives).
+
+7.43.13.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/abc9_unmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/abc9_unmap.v' to AST representation.
+Generating RTLIL representation for module `$__DFF_x__$abc9_flop'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
+Successfully finished Verilog frontend.
+
+7.43.13.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~5 debug messages>
+
+7.44. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+7.45. Executing TECHMAP pass (map to technology primitives).
+
+7.45.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+7.45.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~22 debug messages>
+Removed 0 unused cells and 35 unused wires.
+
+7.46. Executing OPT_LUT pass (optimize LUTs).
+Discovering LUTs.
+Number of LUTs:        0
+  with \SB_CARRY    (#0)    0
+  with \SB_CARRY    (#1)    0
+
+Eliminating LUTs.
+Number of LUTs:        0
+  with \SB_CARRY    (#0)    0
+  with \SB_CARRY    (#1)    0
+
+Combining LUTs.
+Number of LUTs:        0
+  with \SB_CARRY    (#0)    0
+  with \SB_CARRY    (#1)    0
+
+Eliminated 0 LUTs.
+Combined 0 LUTs.
+
+7.47. Executing TECHMAP pass (map to technology primitives).
+
+7.47.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `$lut'.
+Successfully finished Verilog frontend.
+
+7.47.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+7.48. Executing AUTONAME pass.
+
+7.49. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `cpu'. Setting top module to cpu.
+
+7.49.1. Analyzing design hierarchy..
+Top module:  \cpu
+
+7.49.2. Analyzing design hierarchy..
+Top module:  \cpu
+Removed 0 unused modules.
+
+7.50. Printing statistics.
+
+=== cpu ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       70 wires
+     1182 wire bits
+       70 public wires
+     1182 public wire bits
+        3 ports
+       34 port bits
+        5 cells
+        5   $scopeinfo
+
+7.51. Executing CHECK pass (checking for obvious problems).
+Checking module cpu...
+Found and reported 0 problems.
+
+7.52. Executing JSON backend.
+
+End of script. Logfile hash: 2255a7a31b, time: 3.76s, user: 3.59s, system: 0.23s, MEM: 80.99 MB peak
+Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 16.0.0.16000026)
+Time spent: 27% 25x read_verilog (1 sec), 13% 17x opt_dff (0 sec), ...
