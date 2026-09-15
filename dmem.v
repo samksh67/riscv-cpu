@@ -1,4 +1,7 @@
-module dmem (
+module dmem #(
+    parameter WORDS = 16,
+    parameter BITS  = 4
+) (
     input             clk,
     input      [31:0] addr,
     input      [31:0] wdata,
@@ -6,11 +9,11 @@ module dmem (
     input      [2:0]  funct3,
     output reg [31:0] rdata
 );
-    reg [31:0] mem [0:15];
+    reg [31:0] mem [0:WORDS-1];
     integer i;
-    initial for (i = 0; i < 16; i = i + 1) mem[i] = 32'b0;
+    initial for (i = 0; i < WORDS; i = i + 1) mem[i] = 32'b0;
 
-    wire [3:0] widx = addr[5:2];    // which word
+    wire [BITS-1:0] widx = addr[BITS+1:2];
     wire [1:0] boff = addr[1:0];    // which byte inside it
     wire [31:0] word = mem[widx];
 

@@ -1,4 +1,9 @@
-module cpu (
+module cpu #(
+    parameter IMEM_WORDS = 16,
+    parameter IMEM_BITS  = 4,
+    parameter DMEM_WORDS = 16,
+    parameter DMEM_BITS  = 4
+) (
     input clk,
     input rst,
     output [31:0] dbg
@@ -7,9 +12,9 @@ module cpu (
     reg [31:0] pc = 32'd0;
 
     // ---- instruction memory (64 words) ----
-    reg [31:0] imem [0:15];
+    reg [31:0] imem [0:IMEM_WORDS-1];
     initial $readmemh("program.hex", imem);
-    wire [31:0] inst = imem[pc[5:2]];
+    wire [31:0] inst = imem[pc[IMEM_BITS+1:2]];
 
     // ---- decode ----
     wire [6:0]  opcode, funct7;
@@ -52,7 +57,8 @@ module cpu (
 
     wire zero = (alu_result == 32'd0);
 
-    dmem u_dmem(.clk(clk), .addr(alu_result), .wdata(rs2_data),
+    dmem #(.WORDS(DMEM_WORDS), .BITS(DMEM_BITS))
+         u_dmem(.clk(clk), .addr(alu_result), .wdata(rs2_data),
                 .we(mem_write), .funct3(funct3), .rdata(mem_rdata));
 
     // ---- program counter ----
