@@ -16,6 +16,7 @@ Built to understand what actually happens between an instruction being fetched a
 | Max frequency | **78.28 MHz** |
 | Critical path | 3.95 ns logic, 8.82 ns routing |
 | Instructions | 37 / 37 RV32I base |
+| Compliance | 40 / 42 `rv32ui` tests passing |
 | Status | Verified in simulation and on hardware |
 
 The critical path is routing-dominated — 8.82 ns of wire delay against 3.95 ns of logic. On a chip this empty the placer has no pressure to pack blocks tightly, so signals travel further than they need to. A denser design or explicit placement constraints would close some of that gap.
@@ -66,6 +67,15 @@ iverilog -o sim_cpu tb_cpu.v cpu.v decoder.v control.v regfile.v alu.v dmem.v &&
 ```
 
 Each testbench self-checks, prints PASS/FAIL per case, and dumps a VCD for waveform inspection.
+
+### Compliance suite
+
+```bash
+./compliance/run.sh              # all 42 rv32ui tests
+./compliance/run.sh add lw       # named tests only
+```
+
+Requires `riscv32-none-elf-gcc`. The runner assembles each test, relinks it to address 0, and runs it through `tb_compliance.v`.
 
 ### Hardware
 
@@ -148,6 +158,21 @@ Directed tests target the places where a plausible-looking implementation is sil
 
 ---
 
+### Compliance
+
+Run against the official `riscv-tests` `rv32ui` suite, with the test programs relinked from `0x80000000` to address 0 to match the reset vector:
+
+```
+40/42 tests passed
+```
+
+Both failures are architectural rather than instruction bugs, and both are documented under Scope above:
+
+- **`fence_i`** — the test writes an instruction into memory and jumps to it. The store lands in data memory while the fetch comes from instruction memory, so the old instruction executes. A Harvard design cannot pass this test without merging the memories.
+- **`ma_data`** — `lh t2, 1(s0)` on a halfword starting at byte offset 1. The halfword select mux only handles offsets 0 and 2, so offset 1 is treated as offset 0 and returns the wrong bytes. The design does not support misaligned access; the honest criticism is that it fails *silently* rather than raising the architectural misaligned-address exception.
+
+---
+
 ## Bugs and debugging notes
 
 Kept deliberately. The debugging is most of the work and the part worth reading.
@@ -217,7 +242,8 @@ Design decisions and their consequences, stated up front:
 
 - **Single-cycle by design.** One instruction per clock, so the critical path spans the whole datapath. A pipelined implementation would clock significantly faster at the cost of hazard handling.
 - **16-word memories.** Sized to fit the device without block RAM inference. Enough for the test programs; a larger design would need synchronous reads.
-- **Verified with directed tests**, not the official compliance suite. Conformance is demonstrated against hand-written corner cases rather than formally proven.
+- **Harvard architecture.** Separate instruction and data memories, so stores cannot reach instruction memory and self-modifying code is unsupported. This is why `fence_i` fails — there is nothing for a `fence.i` to synchronise.
+- **Misaligned accesses unsupported.** The RISC-V spec permits implementations to omit them; halfword and word accesses must be naturally aligned. This is why `ma_data` fails.
 
 ## What I'd do differently
 
