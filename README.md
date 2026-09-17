@@ -1,8 +1,8 @@
-# riscv-cpu
+# RISC-V CPU Core (RV32I)
 
-A single-cycle RV32I processor written from scratch in Verilog, verified with self-checking testbenches, and running on a Lattice iCE40 HX8K FPGA.
+A single-cycle RV32I processor written from scratch in Verilog, verified with directed and constrained-random testbenches, checked against the official RISC-V test suite, and running on a Lattice iCE40 HX8K FPGA.
 
-Built to understand what actually happens between an instruction being fetched and a register being written — and to practise the debug loop that verification work runs on.
+Built to understand what actually happens between an instruction being fetched and a register being written, and to practice the debug loop that verification work runs on.
 
 ---
 
@@ -17,9 +17,10 @@ Built to understand what actually happens between an instruction being fetched a
 | Critical path | 3.95 ns logic, 8.82 ns routing |
 | Instructions | 37 / 37 RV32I base |
 | Compliance | 40 / 42 `rv32ui` tests passing |
+| Functional coverage | 100% over 20,000 randomized transactions (ALU) |
 | Status | Verified in simulation and on hardware |
 
-The critical path is routing-dominated — 8.82 ns of wire delay against 3.95 ns of logic. On a chip this empty the placer has no pressure to pack blocks tightly, so signals travel further than they need to. A denser design or explicit placement constraints would close some of that gap.
+The critical path is routing-dominated: 8.82 ns of wire delay against 3.95 ns of logic. On a chip this empty the placer has no pressure to pack blocks tightly, so signals travel further than they need to. A denser design or explicit placement constraints would close some of that gap.
 
 ---
 
@@ -27,37 +28,43 @@ The critical path is routing-dominated — 8.82 ns of wire delay against 3.95 ns
 
 Complete RV32I base integer set:
 
-- **Arithmetic / logic** — `add` `sub` `and` `or` `xor` `sll` `srl` `sra` `slt` `sltu`
-- **Immediate forms** — `addi` `andi` `ori` `xori` `slli` `srli` `srai` `slti` `sltiu`
-- **Loads** — `lw` `lh` `lhu` `lb` `lbu`
-- **Stores** — `sw` `sh` `sb`
-- **Branches** — `beq` `bne` `blt` `bge` `bltu` `bgeu`
-- **Jumps** — `jal` `jalr`
-- **Upper immediate** — `lui` `auipc`
+- **Arithmetic / logic:** `add` `sub` `and` `or` `xor` `sll` `srl` `sra` `slt` `sltu`
+- **Immediate forms:** `addi` `andi` `ori` `xori` `slli` `srli` `srai` `slti` `sltiu`
+- **Loads:** `lw` `lh` `lhu` `lb` `lbu`
+- **Stores:** `sw` `sh` `sb`
+- **Branches:** `beq` `bne` `blt` `bge` `bltu` `bgeu`
+- **Jumps:** `jal` `jalr`
+- **Upper immediate:** `lui` `auipc`
 
 ---
 
 ## Toolchain
 
-Entirely open-source, running natively on macOS — no vendor licences, no virtual machine.
+Entirely open-source, running natively on macOS, with no vendor licences and no virtual machine.
 
 | Tool | Purpose |
 |---|---|
-| Icarus Verilog | Simulation |
+| Icarus Verilog | Directed-test simulation |
+| Verilator | SystemVerilog testbench simulation |
 | VaporView | Waveform inspection |
+| `riscv32-none-elf-gcc` | Assembling compliance tests |
 | Yosys | Synthesis |
 | nextpnr-ice40 | Place and route |
 | IceStorm (`icepack`, `iceprog`) | Bitstream packing and programming |
 
 ```bash
-brew install icarus-verilog yosys nextpnr-ice40 icestorm
+# Apple Silicon
+brew install icarus-verilog verilator yosys nextpnr-ice40 icestorm
+
+# Intel Mac (Homebrew no longer publishes Intel bottles)
+sudo port install iverilog verilator riscv32-none-elf-gcc
 ```
 
 ---
 
 ## Building
 
-### Simulation
+### Directed tests
 
 ```bash
 iverilog -o sim_rf  tb_regfile.v regfile.v && ./sim_rf
@@ -68,6 +75,14 @@ iverilog -o sim_cpu tb_cpu.v cpu.v decoder.v control.v regfile.v alu.v dmem.v &&
 
 Each testbench self-checks, prints PASS/FAIL per case, and dumps a VCD for waveform inspection.
 
+### Constrained-random regression
+
+```bash
+verilator --binary --timing tb_alu.sv alu.v -o sim_alu_sv \
+          -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC
+./obj_dir/sim_alu_sv
+```
+
 ### Compliance suite
 
 ```bash
@@ -75,7 +90,7 @@ Each testbench self-checks, prints PASS/FAIL per case, and dumps a VCD for wavef
 ./compliance/run.sh add lw       # named tests only
 ```
 
-Requires `riscv32-none-elf-gcc`. The runner assembles each test, relinks it to address 0, and runs it through `tb_compliance.v`.
+The runner assembles each test, relinks it to address 0, and runs it through `tb_compliance.v`.
 
 ### Hardware
 
@@ -116,15 +131,15 @@ One clock cycle per instruction. Only the program counter, the register file wri
 | `cpu.v` | Datapath wiring, PC, instruction memory | PC only |
 | `top.v` | FPGA top level, clock divider, LED output | yes |
 
-**`regfile.v`** — `x0` is hardwired to zero, enforced on both the read path (returns zero regardless of stored contents) and the write path (writes are blocked).
+**`regfile.v`**, `x0` is hardwired to zero, enforced on both the read path (returns zero regardless of stored contents) and the write path (writes are blocked).
 
-**`alu.v`** — Signed and unsigned comparison are separate operations, as are logical and arithmetic right shift. Both distinctions produce different results from identical bit patterns and are easy to get silently wrong.
+**`alu.v`**, Signed and unsigned comparison are separate operations, as are logical and arithmetic right shift. Both distinctions produce different results from identical bit patterns and are easy to get silently wrong.
 
-**`decoder.v`** — Reconstructs and sign-extends immediates for I, S, B, U and J formats. RISC-V scatters immediate bits across the instruction word differently per format, deliberately, to keep most bits in fixed physical positions.
+**`decoder.v`**, Reconstructs and sign-extends immediates for I, S, B, U and J formats. RISC-V scatters immediate bits across the instruction word differently per format, deliberately, to keep most bits in fixed physical positions.
 
-**`control.v`** — Every output is assigned a safe default before the case statement. An incomplete case in combinational logic infers a latch, which synthesis warns about and simulation does not.
+**`control.v`**, Every output is assigned a safe default before the case statement. An incomplete case in combinational logic infers a latch, which synthesis warns about and simulation does not.
 
-**`dmem.v`** — Word-addressed storage with byte and halfword access built on read-modify-write: a partial store reads the containing word, replaces the addressed bytes, and writes the whole word back.
+**`dmem.v`**, Word-addressed storage with byte and halfword access built on read-modify-write: a partial store reads the containing word, replaces the addressed bytes, and writes the whole word back.
 
 ### Three muxes
 
@@ -140,36 +155,49 @@ Every decision in the datapath is a multiplexer driven by one control signal:
 
 ## Verification
 
-Modules are tested in isolation before integration, so a failure localises to one block rather than the whole datapath.
+Three layers, each catching a different class of bug: directed tests for known corner cases, constrained-random with coverage for the cases nobody thought to write, and the official compliance suite for conformance to the spec.
 
-Testbenches drive stimulus on the **negative** clock edge while the design samples on the **positive** edge. This keeps inputs stable for half a cycle before capture and avoids the race conditions that arise when both sides move on the same edge — the simulator's event ordering shouldn't decide whether a test passes.
+Modules are tested in isolation before integration, so a failure localises to one block rather than the whole datapath. Testbenches drive stimulus on the **negative** clock edge while the design samples on the **positive** edge, keeping inputs stable for half a cycle before capture. The simulator's event ordering shouldn't decide whether a test passes.
 
-### Corner cases
+### Directed corner cases
 
-Directed tests target the places where a plausible-looking implementation is silently wrong:
+Targeting the places where a plausible-looking implementation is silently wrong:
 
-- **Sign extension** — `addi x1, x0, -1` confirms the immediate stays negative through extension rather than becoming 4095.
-- **Signed vs unsigned comparison** — identical bit patterns compared both ways. `slt(-5, 3)` returns 1; `sltu` with the same inputs returns 0, because unsigned reads `0xFFFFFFFB` as a large positive value.
-- **Arithmetic vs logical right shift** — `-8 >>> 1` gives -4; `-8 >> 1` gives 2,147,483,644. Same input, same distance, different fill bit.
-- **`x0` protection** — writes to `x0` are attempted and confirmed to have no effect.
-- **Branch inversion** — every branch test includes the case where the condition is *false*. A branch unit that always fires passes a suite that only tests taken branches.
-- **Poison instructions** — the instructions a taken branch should skip write a sentinel value. Checking that the sentinel is absent proves the skip happened, rather than only that the destination was reached.
-- **Partial stores** — `sb` writing `0xFF` into byte 3 of `0x12345678` must yield `0xFF345678`, not `0x000000FF`. This is the check that catches a read-modify-write that clobbers the whole word.
+- **Sign extension.** `addi x1, x0, -1` confirms the immediate stays negative through extension rather than becoming 4095.
+- **Signed vs unsigned comparison.** Identical bit patterns compared both ways. `slt(-5, 3)` returns 1; `sltu` with the same inputs returns 0, because unsigned reads `0xFFFFFFFB` as a large positive value.
+- **Arithmetic vs logical right shift.** `-8 >>> 1` gives -4; `-8 >> 1` gives 2,147,483,644. Same input, same distance, different fill bit.
+- **`x0` protection.** Writes to `x0` are attempted and confirmed to have no effect.
+- **Branch inversion.** Every branch test includes the case where the condition is *false*. A branch unit that always fires passes a suite that only tests taken branches.
+- **Poison instructions.** The instructions a taken branch should skip write a sentinel value. Checking the sentinel is absent proves the skip happened, rather than only that the destination was reached.
+- **Partial stores.** `sb` writing `0xFF` into byte 3 of `0x12345678` must yield `0xFF345678`, not `0x000000FF`. This catches a read-modify-write that clobbers the whole word.
 
----
+### Constrained-random with functional coverage
+
+`tb_alu.sv` is a class-based SystemVerilog testbench with four parts:
+
+- **Transaction generation.** A class producing weighted-random stimulus. The weighting is the point: uniformly random 32-bit operands essentially never produce zero, `-1`, `0x80000000`, or shift amounts at the 0/1/31/32 boundaries, which is exactly where ALU bugs live. Corner values are oversampled deliberately.
+- **Reference model.** The expected result computed independently from the ISA spec. Deriving it from the RTL instead would let a shared misunderstanding agree with itself and the bug would survive.
+- **Scoreboard.** Compares DUT output against the reference on every transaction and reports mismatches with the failing operands.
+- **Coverage model.** Bins for operation, operand sign, and shift-amount class, plus the crosses between them. The crosses are what matter: *was SRA ever exercised with a negative operand at the maximum shift?*
+
+**A coverage hole the pass/fail result could not have found.** The first run reported 20,000 passes and **87.36%** functional coverage. Ten cross bins were empty: no operation had ever been tested with a mid-range shift amount. The generator picked corner values 0, 1, 31, 32 or an unconstrained 32-bit random, and a random 32-bit value is essentially always ≥ 32, so it landed in the overflow bin. Nothing produced a shift between 2 and 30.
+
+One added constraint closed it to **100%**. The design was correct either way, but an entire input class had gone untested and nothing except the coverage model would have said so.
+
+> Verilator does not implement `covergroup`/`coverpoint`, so the coverage model is built explicitly from arrays: the same bins and crosses a covergroup would declare, counted by hand.
 
 ### Compliance
 
-Run against the official `riscv-tests` `rv32ui` suite, with the test programs relinked from `0x80000000` to address 0 to match the reset vector:
+Run against the official `riscv-tests` `rv32ui` suite, with test programs relinked from `0x80000000` to address 0 to match the reset vector:
 
 ```
 40/42 tests passed
 ```
 
-Both failures are architectural rather than instruction bugs, and both are documented under Scope above:
+Both failures are architectural rather than instruction bugs, and both correspond to design decisions listed under Scope below:
 
-- **`fence_i`** — the test writes an instruction into memory and jumps to it. The store lands in data memory while the fetch comes from instruction memory, so the old instruction executes. A Harvard design cannot pass this test without merging the memories.
-- **`ma_data`** — `lh t2, 1(s0)` on a halfword starting at byte offset 1. The halfword select mux only handles offsets 0 and 2, so offset 1 is treated as offset 0 and returns the wrong bytes. The design does not support misaligned access; the honest criticism is that it fails *silently* rather than raising the architectural misaligned-address exception.
+- **`fence_i`.** The test writes an instruction into memory and jumps to it. The store lands in data memory while the fetch comes from instruction memory, so the old instruction executes. A Harvard design cannot pass this without merging the memories.
+- **`ma_data`.** `lh t2, 1(s0)` on a halfword starting at byte offset 1. The halfword select mux handles offsets 0 and 2 only, so offset 1 is treated as offset 0. The design does not support misaligned access; the fair criticism is that it fails *silently* rather than raising the architectural misaligned-address exception.
 
 ---
 
@@ -181,7 +209,7 @@ Kept deliberately. The debugging is most of the work and the part worth reading.
 
 Three decoder tests failed on I-type instructions. `rd`, `rs1` and `imm` were correct; only `rs2` mismatched.
 
-The cause was the testbench. `rs2` is a fixed bit slice — `inst[24:20]` — extracted unconditionally. On I-type instructions those bits aren't a register field; they're the low five bits of the immediate. For `addi x1, x0, 10` the decoder reported `rs2 = 10`, exactly what those bits contain. The expected values had assumed zero.
+The cause was the testbench. `rs2` is a fixed bit slice, `inst[24:20]`, extracted unconditionally. On I-type instructions those bits aren't a register field; they're the low five bits of the immediate. For `addi x1, x0, 10` the decoder reported `rs2 = 10`, exactly what those bits contain. The expected values had assumed zero.
 
 Downstream logic ignores `rs2` when the opcode is I-type, so the field's contents are irrelevant rather than required to be zero.
 
@@ -189,9 +217,9 @@ Downstream logic ignores `rs2` when the opcode is I-type, so the field's content
 
 ### A signal can be correct and still not connected
 
-`lw` returned the memory *address* instead of the loaded value. Tracing showed `write_data` was 42 — the correct value — yet the register captured 20, the ALU result, on every run.
+`lw` returned the memory *address* instead of the loaded value. Tracing showed `write_data` was 42, the correct value, yet the register captured 20 (the ALU result) on every run.
 
-The tell was that the wrong answer was consistently *another signal's* value, across three test runs with three different addresses. That pattern points at wiring, not logic.
+The tell was that the wrong answer was consistently *another signal's* value, across three runs with three different addresses. That pattern points at wiring, not logic.
 
 The register file was still instantiated with `.rd_data(alu_result)` from before the load path existed. `write_data` was computed correctly and consumed by nothing. Watching a signal in a trace says nothing about whether anything is connected to it.
 
@@ -201,12 +229,12 @@ Found by reproducing the design in a clean environment and diffing against the w
 
 The first synthesis run reported zero cells. Yosys had optimised away the whole design.
 
-The debug output was wired to `regs[5]`, and the test program never writes to `x5`. Yosys proved the output was constant zero, so everything feeding it was dead logic. Simulation had never noticed, because the testbench reached into the hierarchy with `dut.u_rf.regs[3]` — a path that doesn't exist in hardware.
+The debug output was wired to `regs[5]`, and the test program never writes to `x5`. Yosys proved the output was constant zero, so everything feeding it was dead logic. Simulation never noticed, because the testbench reached into the hierarchy with `dut.u_rf.regs[3]`, a path that doesn't exist in hardware.
 
 Two related problems surfaced in the same investigation:
 
 - `imem[pc[31:2]]` uses a 30-bit index into a 64-entry array. Simulation truncates silently; synthesis treats almost the whole range as out-of-bounds.
-- `reg [31:0] pc;` with no initial value is `x` at synthesis time, which lets the optimiser fold downstream logic to constants.
+- `reg [31:0] pc;` with no initial value is `x` at synthesis time, letting the optimiser fold downstream logic to constants.
 
 **Takeaway:** in simulation, anything observable exists. In synthesis, only what reaches a pin exists. A design that simulates perfectly can synthesise to nothing.
 
@@ -216,23 +244,23 @@ First successful synthesis: 7,490 LUTs and 8,322 flip-flops against 7,680 availa
 
 `Number of memories: 0` in the report was the clue. A 64-word instruction memory and a 256-word data memory had been built from flip-flops rather than inferred into block RAM, because both have combinational reads and iCE40 block RAM requires a registered read port.
 
-Resolved for now by shrinking both memories to 16 words, which brought the design to 632 LUTs and 643 flip-flops — 8% of the device. The proper fix is synchronous reads, which would need the datapath restructured to absorb the extra cycle of latency.
+Resolved by shrinking both memories to 16 words, bringing the design to 632 LUTs and 643 flip-flops, 8% of the device. The proper fix is synchronous reads, which would need the datapath restructured to absorb the extra cycle of latency.
 
 **Takeaway:** memory inference rules are a synthesis concern with no simulation equivalent. A memory that works in a testbench may be physically unbuildable.
 
 ### An infinite loop in a test program
 
-A `jalr` test passed all its checks while the PC sat at address 20 forever. The jump target register held 20 — the address of the `jalr` instruction itself, so it jumped to itself indefinitely.
+A `jalr` test passed all its checks while the PC sat at address 20 forever. The jump target register held 20, the address of the `jalr` instruction itself, so it jumped to itself indefinitely.
 
 The assertions still passed because everything they checked happened before the loop began. A test can be green and still be wrong about what it exercised.
 
-### Toolchain: every source build failing at once
+### Two environment failures presenting as one
 
-Multiple unrelated Homebrew packages failed with `fatal error: 'cstdint' file not found`. The cause was a broken Command Line Tools installation with missing C++ SDK headers, which breaks every from-source build — and on an Intel Mac, where prebuilt bottles are no longer published, that is nearly everything.
+Multiple unrelated packages failed to build with `fatal error: 'cstdint' file not found`. The cause was a broken Command Line Tools installation with missing C++ SDK headers, which breaks every from-source build. On an Intel Mac, where prebuilt bottles are no longer published, that is nearly everything.
 
-A second, independent failure: `gmplib.org` was unreachable from the network in use, so one dependency could not fetch its source at all. Worked around by downloading the tarball from a kernel.org mirror and placing it in Homebrew's cache under the filename returned by `brew --cache --build-from-source gmp`.
+A second, independent failure: `gmplib.org` was unreachable from the network in use, so one dependency could not fetch its source at all. Worked around by pulling the tarball from a kernel.org mirror into the package manager's cache.
 
-**Takeaway:** two unrelated environment failures presenting as one symptom. Separating them was most of the work.
+**Takeaway:** two unrelated root causes presenting as a single symptom. Separating them was most of the work.
 
 ---
 
@@ -242,18 +270,20 @@ Design decisions and their consequences, stated up front:
 
 - **Single-cycle by design.** One instruction per clock, so the critical path spans the whole datapath. A pipelined implementation would clock significantly faster at the cost of hazard handling.
 - **16-word memories.** Sized to fit the device without block RAM inference. Enough for the test programs; a larger design would need synchronous reads.
-- **Harvard architecture.** Separate instruction and data memories, so stores cannot reach instruction memory and self-modifying code is unsupported. This is why `fence_i` fails — there is nothing for a `fence.i` to synchronise.
+- **Harvard architecture.** Separate instruction and data memories, so stores cannot reach instruction memory and self-modifying code is unsupported. This is why `fence_i` fails.
 - **Misaligned accesses unsupported.** The RISC-V spec permits implementations to omit them; halfword and word accesses must be naturally aligned. This is why `ma_data` fails.
+
+---
 
 ## What I'd do differently
 
-**Write the build automation on day one.** Every test was a hand-typed `iverilog` invocation with the full file list. That is tolerable for two modules and actively discourages running the full suite once there are seven.
+**Write the build automation on day one.** Every test was a hand-typed `iverilog` invocation with the full file list. Tolerable for two modules, and actively discouraging once there are seven.
 
-**Keep every testbench as its own file.** Test programs were repeatedly overwritten in a single `tb_cpu.v`, so earlier coverage was lost as new instructions were added. A regression suite would have caught breakage during the FPGA changes.
+**Keep every testbench in its own file.** Test programs were repeatedly overwritten in a single `tb_cpu.v`, so earlier coverage was lost as new instructions were added. A regression suite from the start would have caught breakage during the FPGA changes.
 
-**Synthesise earlier.** The design was fully verified in simulation before the first synthesis run, and synthesis then exposed a class of problems — dead outputs, out-of-range indices, memory inference — that simulation structurally cannot find. Running synthesis after the first working instruction would have surfaced all of them a week sooner.
+**Synthesise earlier.** The design was fully verified in simulation before the first synthesis run, and synthesis then exposed a class of problems (dead outputs, out-of-range indices, memory inference) that simulation structurally cannot find. Running synthesis after the first working instruction would have surfaced all of them a week sooner.
 
-**Reconsider the memory interface.** Combinational reads made the single-cycle datapath simple and made block RAM inference impossible. That trade-off was made implicitly on day one and only became visible at synthesis.
+**Start with constrained-random, not after.** The ALU had twelve directed tests and looked thoroughly verified. The randomized testbench immediately revealed an untested input class. Directed tests only cover what you thought of, and you don't know what you didn't think of until something measures it.
 
 ---
 
@@ -261,6 +291,7 @@ Design decisions and their consequences, stated up front:
 
 - RISC-V Unprivileged ISA Specification, Volume I
 - Harris & Harris, *Digital Design and Computer Architecture: RISC-V Edition*
+- `riscv-tests`, the official test suite
 - Project F and the IceStorm documentation, for the open-source FPGA flow
 - Alchitry Cu schematic, for pin assignments
 
@@ -269,11 +300,12 @@ Design decisions and their consequences, stated up front:
 ## Repository layout
 
 ```
+alu.v          tb_alu.v      tb_alu.sv     # ALU, directed and randomized testbenches
 regfile.v      tb_regfile.v
-alu.v          tb_alu.v
 decoder.v      tb_decoder.v
 control.v
 dmem.v
-cpu.v          tb_cpu.v
-top.v          cu.pcf         program.hex
+cpu.v          tb_cpu.v                    # datapath integration
+top.v          cu.pcf        program.hex   # FPGA top level, pin constraints, program image
+compliance/                                # riscv-tests harness: link script, build, runner
 ```
