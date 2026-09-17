@@ -3,3 +3,12 @@ sim_alu
 *.vcd
 riscv-tests/
 compliance/build/
+sim_cpu
+sim_dec
+cpu.json
+synth.log
+top.asc
+top.bin
+top.json
+obj_dir/
+riscv-arch-test/
